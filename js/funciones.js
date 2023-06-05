@@ -21,7 +21,7 @@ function izquierda() {
 const para = document.createElement("p");
 const node = document.createTextNode("Parrafo de prueba añadido mediante nodo");
 para.appendChild(node);
-const element = document.getElementById("div1");
+const element = document.getElementById("div1.1");
 element.appendChild(para);
 
 function myFunction1() {
