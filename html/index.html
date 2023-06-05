@@ -256,6 +256,171 @@
                     <!--//docs-code-block-->
 
                     <!--//FINAL EVENTOS-->
+                    
+                    <!--//NODOS-->
+                    <section class="docs-section" id="item-1-3">
+                        <h2 class="section-heading">Elementos JavaScript HTML DOM (NODOS)</h2>
+                        <p>Un navegador web crea una representación interna del código HTML como un árbol de nodos y a esto lo denominamos DOM (Document Object Model). Los nodos se pueden clasificar en diferentes tipos, dentro de los cuales los principales tipos son: document, element, text y “otros”.</p>
+
+                        <p>Los principales tipos de nodos en el DOM son:<br><br>
+
+                        a) Document: el nodo document es el nodo raíz, a partir del cual derivan el resto de nodos.<br>
+
+                        b) Element: son los nodos definidos por etiquetas html. Por ejemplo una etiqueta div genera un nodo. Si dentro de ese div tenemos tres etiquetas p, dichas etiquetas definen nodos hijos de la etiqueta div.<br>
+
+                        c) Text: el texto dentro de un nodo element se considera un nuevo nodo hijo de tipo text (texto). Los navegadores también crean nodos tipo texto sin contenido para representar elementos como saltos de línea o espacios vacíos.<br>
+
+                        d) Attribute: los atributos de las etiquetas definen nodos, aunque trabajando con JavaScript no los veremos como nodos, sino que lo consideramos información asociada al nodo de tipo element.<br>
+
+                        e) Comentarios y otros: los comentarios y otros elementos como las declaraciones doctype en cabecera de los documentos HTML generan nodos.</p>
+
+                        <p>Adición y eliminación de nodos (elementos HTML)<br><br>
+
+                        Creación de nuevos elementos HTML (nodos):<br>
+                        Para agregar un nuevo elemento al HTML DOM, primero debe crear el elemento (nodo de elemento) y luego agregarlo a un elemento existente.</p>
+                        
+                        <!--//docs-intro-->
+
+                    <div class="docs-code-block">
+                        <pre class="shadow-lg rounded"><code class="javascript hljs"> 
+
+                            const para = document.createElement("p");
+                            const node = document.createTextNode("Parrafo de prueba añadido mediante nodo");
+                            para.appendChild(node);
+                            const element = document.getElementById("div1");
+                            element.appendChild(para);
+
+                    </code></pre>
+
+                    </div>
+                    <!--//docs-code-block-->
+                            <h3>Demo 1</h3>
+                            <p>Añadir nuevo elemento.</p>
+                            <div id="cont2"></div>
+                            <!--<button type="button" onclick="mostrarimg()">Mostrar</button>-->
+                            
+                            <div id="div1">
+                            <p id="p1">Este es un parrafo de muestra 1</p>
+                            <p id="p2">Este es un parrafo de muestra 2</p>
+                            </div>
+                            <script src="../../js/funciones.js"></script>
+                            
+                    <p><br><br>
+
+                        <p>Para eliminar un elemento HTML, utilice el remove() método:</p><br>
+                        <!--//docs-intro-->
+                        <div class="w3-code notranslate htmlHigh">
+                        <span class="tagnamecolor" style="color:brown"><span class="tagcolor" style="color:mediumblue">&lt;</span>div<span class="tagcolor" style="color:mediumblue">&gt;</span></span><br>
+                        &nbsp;
+                        <span class="tagnamecolor" style="color:brown"><span class="tagcolor" style="color:mediumblue">&lt;</span>p<span class="attributecolor" style="color:red"> id<span class="attributevaluecolor" style="color:mediumblue">="p1.1"</span></span><span class="tagcolor" style="color:mediumblue">&gt;</span></span>Parrafo de muestra 1.<span class="tagnamecolor" style="color:brown"><span class="tagcolor" style="color:mediumblue">&lt;</span>/p<span class="tagcolor" style="color:mediumblue">&gt;</span></span><br>
+                        &nbsp;
+                        <span class="tagnamecolor" style="color:brown"><span class="tagcolor" style="color:mediumblue">&lt;</span>p<span class="attributecolor" style="color:red"> id<span class="attributevaluecolor" style="color:mediumblue">="p2.2"</span></span><span class="tagcolor" style="color:mediumblue">&gt;</span></span>Parrafo de muestra 2.<span class="tagnamecolor" style="color:brown"><span class="tagcolor" style="color:mediumblue">&lt;</span>/p<span class="tagcolor" style="color:mediumblue">&gt;</span></span><br>
+                        <span class="tagnamecolor" style="color:brown"><span class="tagcolor" style="color:mediumblue">&lt;</span>/div<span class="tagcolor" style="color:mediumblue">&gt;</span></span><br><br><span class="tagnamecolor" style="color:brown"><span class="tagcolor" style="color:mediumblue">&lt;</span>script<span class="tagcolor" style="color:mediumblue">&gt;</span></span><span class="jscolor" style="color:black"><br>
+                        <span class="jskeywordcolor" style="color:mediumblue">const</span> elmnt = document.<span class="jspropertycolor" style="color:black">getElementById</span>(<span class="jsstringcolor" style="color:brown">"p1"</span>);
+                        elmnt.<span class="jspropertycolor" style="color:black">remove</span>();<br>
+                        </span><span class="tagnamecolor" style="color:brown"><span class="tagcolor" style="color:mediumblue">&lt;</span>/script<span class="tagcolor" style="color:mediumblue">&gt;</span></span> </div>
+                    
+                     <!--//docs-code-block-->
+                            <h3>Demo 2</h3>
+                            <h4>Eliminar elemento.</h4>
+                            <div id="cont2"></div>
+                            
+                        <pre class="shadow-lg rounded text-center"><code class="javascript hljs"> 
+
+                            <div>
+                            <p id="p1.1">Parrafo de prueba 1</p>
+                            <p id="p2.2">Parrafo de prueba 2</p>
+                            </div>
+
+                            <button onclick="myFunction1()" class="btn btn-primary">Elimina elemneto</button>
+
+                            <script src="../../js/funciones.js"></script>
+
+                    </code></pre>
+
+                    </div>
+                    </section>
+
+                    <!--//FINAL NODOS-->
+
+                    <!--//COLECCIONES-->
+                    <section class="docs-section" id="item-1-4">
+                        <h2 class="section-heading">HTMLCollection DOM</h2>
+                        <p>La interfaz HTMLCollection representa una colección genérica (objeto tipo array similar a arguments) de elementos (en orden de documento) y ofrece métodos y propiedades para seleccionarlos de la lista.</p>
+                       <div class="callout-block callout-block-info">
+
+                            <div class="content">
+                                <h4 class="callout-title">
+                                    <span class="callout-icon-holder me-1">
+                                        <i class="fas fa-info-circle"></i>
+                                    </span>
+                                    <!--//icon-holder-->
+                                    Nota
+                                </h4>
+                                <p>El ID es una cadena que distingue entre mayúsculas y minúsculas y es única dentro del
+                                    documento; solo un elemento puede tener un ID dado.</p>
+                            </div>
+                            <!--//content-->
+                        </div>
+
+                        <p>El getElementsByTagName()método devuelve un HTMLCollectionobjeto.<br>
+
+                        Un HTMLCollectionobjeto es una lista similar a una matriz (colección) de elementos HTML.<br>
+
+                        El siguiente código selecciona todos <p>los elementos en un documento y La lengthpropiedad define el número de elementos en un HTMLCollection:</p>
+                             <!--//docs-intro-->
+
+                    <div class="docs-code-block">
+                        <pre class="shadow-lg rounded"><code class="javascript hljs">const miColeccion = document.getElementsByTagName("p");
+
+document.getElementById("colec1").innerHTML = "El innerHTML se encuentra en el parrafo: " + miColeccion[1].innerHTML + "El número de parrafos del html es: " + miColeccion.length + " parrafo/s.";</code></pre>
+
+                    </div>
+                    <!--//docs-code-block-->
+                    <h3>Demo 1</h3>
+                            <h4>Uso de colecciones.</h4>
+                            <div id="cont2"></div>
+
+                    <p>Tomaremos el parrafo 1 dentro de la coleccion de este html:</p><br>
+                    <p id="colec1"></p>
+
+                    <script>
+                    const miColeccion = document.getElementsByTagName("p");
+
+                    document.getElementById("colec1").innerHTML = "El innerHTML se encuentra en el parrafo de array [1]: " + miColeccion[1].innerHTML +"\n"+ "El número de parrafos del html es: " + miColeccion.length + " parrafo/s.";
+                    
+
+                    </script>
+
+                    <p>La lengthpropiedad es útil cuando desea recorrer los elementos de una colección lo que nos permite adaptar alguna cualidad como estilos como se ve a continuacion:</p>
+                     <div class="docs-code-block">
+                        <pre class="shadow-lg rounded"><code class="javascript hljs">function mifuncolecc1() {
+  const myCollection = document.getElementsByTagName("p");
+  for (let i = 0; i < myCollection.length; i++) {
+    myCollection[i].style.color = "blue";
+  }
+}</code></pre>
+
+                    </div>
+                    <!--//docs-code-block-->
+                    <h3>Demo 2</h3>
+                            <h4>Uso de colecciones con diferecntes estilos:</h4>
+                            <div id="cont2"></div>
+                    <p>Podras observar las diferentes aplicaciones de estilos en los parrafos al dar clic: </p>
+
+                    <button onclick="mifuncolecc1()" class="btn btn-primary">Fondo amarillo</button>
+                    <button onclick="mifuncolecc2()" class="btn btn-primary">Fondo blanco</button>
+                    <button onclick="mifuncolecc3()" class="btn btn-primary">Texto azul</button>
+                    <button onclick="mifuncolecc4()" class="btn btn-primary">Texto negro</button>
+
+                            <script src="../../js/funciones.js"></script>
+                
+                    </section>
+
+
+                   
+
+                    <!--//FINAL COLECCIONES-->
 
                     <footer class="footer">
                         <div class="container text-center py-5">
