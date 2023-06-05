@@ -113,84 +113,136 @@
                     </header>
                     <!--//ANIMACIONES-->
                     <section class="docs-section" id="item-1-1">
-                        <h2 class="section-heading">Animaciones DOM</h2>
+                        <h2 class="section-heading">Animaciones HTML DOM</h2>
                         <p>En JavaScript, el DOM (Document Object Model) se utiliza para interactuar con elementos
                             HTML y manipular su contenido, estilo y comportamiento. La animación en JavaScript se
                             puede lograr utilizando diversas técnicas y bibliotecas. A continuación, te mostraré un
                             ejemplo básico de cómo realizar una animación utilizando el DOM y JavaScript puro:</p>
 
+                        <p>
+                            <b>Para demostrar cómo crear animaciones HTML con JavaScript:</b> <br>
+                        <ul>
+                            <li>Creamos una página web simple</li>
+                            <li>Creamos un contenedor de animacion el mismo que deben ser relativo a un elemento
+                                contenedor.</li>
+                        </ul>
 
-                        <!--//docs-intro-->
+                        <p>
+                            Dale estilo a los elementos: <br>
 
-                        <div class="docs-code-block">
-                            <pre
-                                class="shadow-lg rounded"><code class="javascript hljs"> 
-                                    function izquierda() {
-                                    let id = null;
-                                    const elem = document.getElementById("animate");   
-                                    let pos = 0;
-                                    clearInterval(id);
-                                    id = setInterval(frame, 5);
-                                    function frame() {
-                                      if (pos == 350) {
-                                        clearInterval(id);
-                                      } else {
-                                        pos++; 
-                                        elem.style.top = pos + "px"; 
-                                        elem.style.left = pos + "px"; 
-                                      }
-                                    }
-                                  }</code></pre>
-
+                        <ul>
+                            <li>El elemento contenedor debe crearse con estilo = <b>" position: relative"</b> . </li>
+                            <li>El elemento de animación debe crearse con estilo = <b>" position: absolute"</b> .</li>
+                        </ul>
+                        <div class="w3-example">
+                            <div class="w3-code notranslate cssHigh"><span class="cssselectorcolor" style="color:brown">
+                                    #container <span class="cssdelimitercolor" style="color:black">{</span><span
+                                        class="csspropertycolor" style="color:red"><br>&nbsp;&nbsp;width<span
+                                            class="csspropertyvaluecolor" style="color:mediumblue"><span
+                                                class="cssdelimitercolor" style="color:black">:</span> 400px<span
+                                                class="cssdelimitercolor"
+                                                style="color:black">;</span></span><br>&nbsp;&nbsp;height<span
+                                            class="csspropertyvaluecolor" style="color:mediumblue"><span
+                                                class="cssdelimitercolor" style="color:black">:</span>
+                                            400px<span class="cssdelimitercolor"
+                                                style="color:black">;</span></span><br>&nbsp; position<span
+                                            class="csspropertyvaluecolor" style="color:mediumblue"><span
+                                                class="cssdelimitercolor" style="color:black">:</span> relative<span
+                                                class="cssdelimitercolor" style="color:black">;</span></span><br>&nbsp;
+                                        background<span class="csspropertyvaluecolor" style="color:mediumblue"><span
+                                                class="cssdelimitercolor" style="color:black">:</span> yellow<span
+                                                class="cssdelimitercolor" style="color:black">;</span></span><br>
+                                    </span><span class="cssdelimitercolor" style="color:black">}</span><br>#animate
+                                    <span class="cssdelimitercolor" style="color:black">{</span><span
+                                        class="csspropertycolor" style="color:red"><br>&nbsp; width<span
+                                            class="csspropertyvaluecolor" style="color:mediumblue"><span
+                                                class="cssdelimitercolor" style="color:black">:</span> 50px<span
+                                                class="cssdelimitercolor" style="color:black">;</span></span><br>&nbsp;
+                                        height<span class="csspropertyvaluecolor" style="color:mediumblue"><span
+                                                class="cssdelimitercolor" style="color:black">:</span>
+                                            50px<span class="cssdelimitercolor"
+                                                style="color:black">;</span></span><br>&nbsp; position<span
+                                            class="csspropertyvaluecolor" style="color:mediumblue"><span
+                                                class="cssdelimitercolor" style="color:black">:</span> absolute<span
+                                                class="cssdelimitercolor" style="color:black">;</span></span><br>&nbsp;
+                                        background<span class="csspropertyvaluecolor" style="color:mediumblue"><span
+                                                class="cssdelimitercolor" style="color:black">:</span> red<span
+                                                class="cssdelimitercolor"
+                                                style="color:black">;</span></span><br></span><span
+                                        class="cssdelimitercolor" style="color:black">}</span>
+                                </span></div>
                         </div>
-                        <!--//docs-code-block-->
-                        <!-- MODAL EJEMPLO-->
-                        <div class="w3-container">
-                            <button onclick="document.getElementById('id01').style.display='block'; izquierda()"
-                                class="w3-button w3-green w3-large">Ejecutar</button>
 
-                            <div id="id01" class="w3-modal">
-                                <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
-                                    <br> <br>
-                                    <center>
-                                        <div id="container">
-                                            <div id="animate"></div>
-                                        </div>
+                        <h2>Código de animación:</h2> <br>
+
+                        Las animaciones de JavaScript se realizan mediante la programación de cambios graduales en
+                        el estilo de un elemento.
+
+                        Los cambios son llamados por un temporizador. Cuando el intervalo del temporizador es
+                        pequeño, la animación parece continua.
+
+                        El código básico es:
+                    </section>
+
+                    <!--//docs-intro-->
+
+                    <div class="docs-code-block">
+                        <pre class="shadow-lg rounded"><code class="javascript hljs"> 
+                                function izquierda() {
+                                let id = null;
+                                const elem = document.getElementById("animate");   
+                                let pos = 0;
+                                clearInterval(id);
+                                id = setInterval(frame, 5);
+                                function frame() {
+                                  if (pos == 350) {
+                                    clearInterval(id);
+                                  } else {
+                                    pos++; 
+                                    elem.style.top = pos + "px"; 
+                                    elem.style.left = pos + "px"; 
+                                  }
+                                }
+                              }</code></pre>
+
+                    </div>
+                    <!--//docs-code-block-->
+                    <!-- MODAL EJEMPLO-->
+                    <div class="w3-container">
+                        <button onclick="document.getElementById('id01').style.display='block'; izquierda()"
+                            class="w3-button w3-green w3-large">Ejecutar</button>
+                        <div id="id01" class="w3-modal">
+                            <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+                                <br> <br>
+                                <center>
+                                    <div id="container">
+                                        <div id="animate"></div>
+                                    </div>
+                                </center>
+
+                                <div class="w3-center"><br>
+                                    <span onclick="document.getElementById('id01').style.display='none'"
+                                        class="w3-button w3-xlarge w3-hover-red w3-display-topright"
+                                        title="Close Modal">&times;</span>
+                                </div>
+
+                                <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                                    <center><button type="submit" onclick="izquierda()" class="btn btn-info">Intentalo
+                                            otra vez</button>
                                     </center>
-
-                                    <div class="w3-center"><br>
-                                        <span onclick="document.getElementById('id01').style.display='none'"
-                                            class="w3-button w3-xlarge w3-hover-red w3-display-topright"
-                                            title="Close Modal">&times;</span>
-                                    </div>
-
-                                    <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-                                        <center><button type="submit" onclick="izquierda()" class="btn btn-info">Intentalo
-                                                otra vez</button>
-
-
-                                            </center>
-                                    </div>
-
-
                                 </div>
                             </div>
                         </div>
-
-                    </section>
-
-
-
-
-
-
+                    </div>
                     <!--//FINAL ANIMACIONES-->
                     <!--//EVENTOS-->
                     <section class="docs-section" id="item-1-2">
                         <h2 class="section-heading">Eventos DOM</h2>
                         <p>En JavaScript, puedes utilizar el DOM (Document Object Model) para manejar eventos en
-                            elementos HTML. Los eventos son acciones o sucesos que ocurren en la página web, como hacer
-                            clic en un botón, mover el cursor del mouse, presionar una tecla, entre otros. Aquí tienes
+                            elementos HTML. Los eventos son acciones o sucesos que ocurren en la página web, como
+                            hacer
+                            clic en un botón, mover el cursor del mouse, presionar una tecla, entre otros. Aquí
+                            tienes
                             un ejemplo básico de cómo manejar eventos en JavaScript utilizando el DOM:</p>
                     </section>
 
@@ -209,7 +261,8 @@
                         <div class="container text-center py-5">
                             <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
                             <small class="copyright">Template diseñado por <a class="theme-link"
-                                    href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley.</a></small>
+                                    href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying
+                                    Riley.</a></small>
                             <ul class="social-list list-unstyled pt-4 mb-0">
                                 <li class="list-inline-item"><a href="https://www.facebook.com/"><i
                                             class="fab fa-facebook-f fa-fw"></i></a></li>
