@@ -6,7 +6,7 @@
 
     <!-- Meta -->
     <meta charset="utf-8">
-    <title>Grupo Nro.</title>
+    <title>Grupo Nro. 2</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -27,6 +27,13 @@
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="../assets/css/theme.css">
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+
+    <!-- MODAL ANIMACIONES Y EVENTOS -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- funciones -->
+    <script src="../js/funciones.js"></script>
 </head>
 
 <body class="docs-page">
@@ -111,16 +118,70 @@
                             HTML y manipular su contenido, estilo y comportamiento. La animación en JavaScript se
                             puede lograr utilizando diversas técnicas y bibliotecas. A continuación, te mostraré un
                             ejemplo básico de cómo realizar una animación utilizando el DOM y JavaScript puro:</p>
+
+
+                        <!--//docs-intro-->
+
+                        <div class="docs-code-block">
+                            <pre
+                                class="shadow-lg rounded"><code class="javascript hljs"> 
+                                    function myMove() {
+                                    let id = null;
+                                    const elem = document.getElementById("animate");   
+                                    let pos = 0;
+                                    clearInterval(id);
+                                    id = setInterval(frame, 5);
+                                    function frame() {
+                                      if (pos == 350) {
+                                        clearInterval(id);
+                                      } else {
+                                        pos++; 
+                                        elem.style.top = pos + "px"; 
+                                        elem.style.left = pos + "px"; 
+                                      }
+                                    }
+                                  }</code></pre>
+
+                        </div>
+                        <!--//docs-code-block-->
+                        <!-- MODAL EJEMPLO-->
+                        <div class="w3-container">
+                            <button onclick="document.getElementById('id01').style.display='block'; myMove()"
+                                class="w3-button w3-green w3-large">Ejecutar</button>
+
+                            <div id="id01" class="w3-modal">
+                                <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+                                    <br> <br>
+                                    <center>
+                                        <div id="container">
+                                            <div id="animate"></div>
+                                        </div>
+                                    </center>
+
+
+
+                                    <div class="w3-center"><br>
+                                        <span onclick="document.getElementById('id01').style.display='none'"
+                                            class="w3-button w3-xlarge w3-hover-red w3-display-topright"
+                                            title="Close Modal">&times;</span>
+                                    </div>
+
+                                    <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                                        <center><button type="submit" onclick="myMove()" class="btn btn-info">Intentalo
+                                                otra vez</button></center>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
                     </section>
 
 
-                    <!--//docs-intro-->
 
-                    <div class="docs-code-block">
-                        <pre class="shadow-lg rounded"><code class="javascript hljs"> EN CONSTRUCCION !!!!</code></pre>
 
-                    </div>
-                    <!--//docs-code-block-->
+
 
                     <!--//FINAL ANIMACIONES-->
                     <!--//EVENTOS-->
@@ -167,6 +228,12 @@
     <script src="../assets/plugins/popper.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../js/modernizr.js"></script>
+
+
+
+
+
 
 
     <!-- Page Specific JS -->
