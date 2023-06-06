@@ -164,7 +164,8 @@
                                                 class="cssdelimitercolor"
                                                 style="color:black">;</span></span><br></span><span
                                         class="cssdelimitercolor" style="color:black">}</span>
-                                </span></div>
+                                </span>
+                            </div>
                         </div>
 
                         <h2>Código de animación:</h2> <br>
@@ -206,7 +207,8 @@
                             <button onclick="document.getElementById('id01').style.display='block'; animateTrain()"
                                 class="w3-button w3-green w3-large">Ejecutar</button>
                             <div id="id01" class="w3-modal">
-                                <div class="w3-modal-content w3-card-4 w3-animate-zoom" id="modal1" style="max-width:600px">
+                                <div class="w3-modal-content w3-card-4 w3-animate-zoom" id="modal1"
+                                    style="max-width:600px">
                                     <br> <br>
 
                                     <div id="field">
@@ -236,21 +238,132 @@
                     <section class="docs-section" id="item-1-2">
                         <h2 class="section-heading">Eventos DOM</h2>
                         <p>En JavaScript, puedes utilizar el DOM (Document Object Model) para manejar eventos en
-                            elementos HTML. Los eventos son acciones o sucesos que ocurren en la página web, como
-                            hacer
-                            clic en un botón, mover el cursor del mouse, presionar una tecla, entre otros. Aquí
-                            tienes
-                            un ejemplo básico de cómo manejar eventos en JavaScript utilizando el DOM:</p>
+                            elementos HTML. <br> Los eventos son acciones o sucesos que ocurren en la página web, como
+                            hacer clic en un botón, mover el cursor del mouse, presionar una tecla, entre otros. <br>
+                            <br>
+                            <b>Ejemplos de eventos HTML:</b>
+                        <ul>
+                            <li>Cuando un usuario hace clic con el mouse</li>
+                            <li>Cuando una página web ha cargado</li>
+                            <li>Cuando se ha cargado una imagen</li>
+                            <li>Cuando el mouse se mueve sobre un elemento</li>
+                            <li>Cuando se cambia un campo de entrada</li>
+                            <li>Cuando se envía un formulario HTML</li>
+                            <li>Cuando un usuario pulsa una tecla</li>
+                        </ul>
+                        </p>
+                        <h2>Código de Eventos DOM:</h2>
+                        <p>
+                            <b>Los eventos onmouseover y onmouseout</b> <br>
+                            Los eventos onmouseovery onmouseoutse pueden usar para activar una función cuando
+                            el usuario pasa el mouse sobre o fuera de un elemento HTML:
+                        </p>
 
-                        <!--//docs-intro-->
-
-                        <div class="docs-code-block">
-                            <pre
-                                class="shadow-lg rounded"><code class="javascript hljs"> EN CONSTRUCCION !!!!</code></pre>
-
+                        <p>
+                            <b>Para demostrar cómo crear eventos HTML con JavaScript:</b> <br>
+                        <ul>
+                            <li>Creamos una página web simple</li>
+                            <li>Creamos un contenedor donde animación deben ser relativas a un elemento contenedor.</li>
+                        </ul>
+                        Dale estilo a los elementos: <br>
+                        </p>
+                        <div class="w3-example">
+                            <div class="w3-code notranslate cssHigh"><span class="cssselectorcolor" style="color:brown">
+                                    #cuadrado1 <span class="cssdelimitercolor" style="color:black">{</span><span
+                                        class="csspropertycolor" style="color:red"><br>&nbsp;&nbsp;height<span
+                                            class="csspropertyvaluecolor" style="color:mediumblue"><span
+                                                class="cssdelimitercolor" style="color:black">:</span> 200px<span
+                                                class="cssdelimitercolor" class="cssdelimitercolor"
+                                                style="color:black">;</span></span><br>&nbsp; width<span
+                                            class="csspropertyvaluecolor" style="color:mediumblue"><span
+                                                class="cssdelimitercolor" style="color:black">:</span> 200px<span
+                                                class="cssdelimitercolor" style="color:black">;</span></span><br>&nbsp;
+                                        background<span class="csspropertyvaluecolor" style="color:mediumblue"><span
+                                                class="cssdelimitercolor" style="color:black">:</span> #000<span
+                                                class="cssdelimitercolor" style="color:black">;</span></span><br>
+                                    </span><span class="cssdelimitercolor" style="color:black">}</span></span>
+                            </div>
                         </div>
-                        <!--//docs-code-block-->
+                        <p>
+                            Las llamadas a las funciones las hacemos inicializando las propiedades onMouseOver y
+                            onMouseOut:
+                        </p>
+                        <div class="w3-example">
+                            <div class="w3-code notranslate htmlHigh">
+                                <span style="color:brown"><span style="color:mediumblue">&lt;</span>a<span
+                                        style="color:red"> href<span style="color:mediumblue">="#"<span
+                                                style="color:red">data-color</span><span
+                                                style="color:mediumblue">="#f00"</span><span
+                                                style="color:mediumblue">&gt;</span></span></span></span>Rojo<span
+                                    style="color:brown"><span style="color:mediumblue">&lt;</span>/a<span
+                                        style="color:mediumblue">&gt;</span>
+                                </span> <br>
+                                <span style="color:brown"><span style="color:mediumblue">&lt;</span>a<span
+                                        style="color:red"> href<span style="color:mediumblue">="#"<span
+                                                style="color:red">data-color</span><span
+                                                style="color:mediumblue">="#0f0"</span><span
+                                                style="color:mediumblue">&gt;</span></span></span></span>Verde<span
+                                    style="color:brown"><span style="color:mediumblue">&lt;</span>/a<span
+                                        style="color:mediumblue">&gt;</span></span> <br>
+                                <span style="color:brown"><span style="color:mediumblue">&lt;</span>a<span
+                                        style="color:red"> href<span style="color:mediumblue">="#"<span
+                                                style="color:red">data-color</span><span
+                                                style="color:mediumblue">="#0ff"</span><span
+                                                style="color:mediumblue">&gt;</span></span></span></span>Azul<span
+                                    style="color:brown"><span style="color:mediumblue">&lt;</span>/a<span
+                                        style="color:mediumblue">&gt;</span></span> <br>
+                                <span style="color:brown"><span style="color:mediumblue">&lt;</span>a<span
+                                        style="color:red"> href<span style="color:mediumblue">="#"<span
+                                                style="color:red">data-color</span><span
+                                                style="color:mediumblue">="#f00"</span><span
+                                                style="color:mediumblue">&gt;</span></span></span></span>Rojo<span
+                                    style="color:brown"><span style="color:mediumblue">&lt;</span>/a<span
+                                        style="color:mediumblue">&gt;</span></span>
+                            </div>
+                        </div>
+                        <h3><b>El código básico es:</b> </h3>
                     </section>
+                    <!--//docs-intro-->
+
+                    <div class="docs-code-block" id="code">
+                        <pre class="shadow-lg rounded"><code class="javascript hljs"> 
+                            function pintar() {
+                            var links = document.getElementsByTagName('a');
+                            var cuadrado = document.getElementById('cuadrado1');
+                                                  
+                            for (var i = 0; i < links.length; i++) {
+                            links[i].addEventListener('mouseover', function() {
+                            var color = this.getAttribute('data-color');
+                            cuadrado.style.backgroundColor = color;
+                            });
+                                                  
+                            links[i].addEventListener('mouseout', function() {
+                            cuadrado.style.backgroundColor = '#000';
+                            });
+                            }}
+                            </code></pre>
+
+                        <!-- MODAL EJEMPLO-->
+                        <div class="w3-container" id="modal">
+                            <button onclick="document.getElementById('id02').style.display='block'; pintar()"
+                                class="w3-button w3-green w3-large">Ejecutar</button>
+                            <div id="id02" class="w3-modal">
+                                <div class="w3-modal-content w3-card-4 w3-animate-zoom" "style=" max-width:600px">
+                                    <center>
+                                        <a href="#" data-color="#f00">Rojo</a>
+                                        <a href="#" data-color="#0f0">Verde</a>
+                                        <a href="#" data-color="#00f">Azul</a>
+                                        <div id="cuadrado1"></div>
+                                    </center>
+                                    <div class="w3-center"><br>
+                                        <span onclick="document.getElementById('id02').style.display='none'"
+                                            class="w3-button w3-xlarge w3-hover-red w3-display-topright"
+                                            title="Close Modal">&times;</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!--//FINAL EVENTOS-->
 
@@ -275,7 +388,8 @@
                             puede tener más de un controlador.</p>
 
                         <p>También cabe recalcar que el dectector de eventos puede ser eliminado mediante el método
-                            <strong>removeEventListener()</strong>.</p>
+                            <strong>removeEventListener()</strong>.
+                        </p>
 
                         <br>
                         <p>Sintaxis: <code>element.addEventListener(event, function, useCapture);</code></p>
@@ -410,7 +524,8 @@ document.getElementById("demo4").innerHTML = a + b;
                             <strong>addEventListener()</strong>, se debe utilizar el parámetro
                             <strong>"useCapture"</strong>, el cual, cundo tome un valor de "false", se definirá una
                             propagación de burbujeo. Por lo contrario, si este parámetro toma el valor de "true", se
-                            definirá una propagación de tipo captura.</p>
+                            definirá una propagación de tipo captura.
+                        </p>
 
                         <br>
                         <h4 class="heading">Ejemplo 5.</h4>

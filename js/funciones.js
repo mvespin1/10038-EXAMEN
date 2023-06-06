@@ -1,5 +1,5 @@
 //animaciones
-//** inclinado */
+//** tren*/
 function animateTrain() {
   let start = Date.now();
   let train = document.getElementById('train');
@@ -19,6 +19,32 @@ document.getElementById('retryButton').onclick = function () {
   train.style.left = '0px';
   animateTrain();
 };
+//eventos
+//** Los eventos onmouseover y onmouseout*/
+function pintar() {
+  // Obtiene todos los elementos <a> en la página
+  var links = document.getElementsByTagName('a');
+
+  // Obtiene la referencia al elemento del cuadrado con el id 'cuadrado1'
+  var cuadrado = document.getElementById('cuadrado1');
+
+  // Itera sobre todos los enlaces <a>
+  for (var i = 0; i < links.length; i++) {
+    // Agrega un evento 'mouseover' a cada enlace
+    links[i].addEventListener('mouseover', function() {
+      // Obtiene el color del atributo 'data-color' del enlace actual
+      var color = this.getAttribute('data-color');
+      // Asigna el color al fondo del cuadrado
+      cuadrado.style.backgroundColor = color;
+    });
+
+    // Agrega un evento 'mouseout' a cada enlace
+    links[i].addEventListener('mouseout', function() {
+      // Restaura el fondo del cuadrado a color negro (#000)
+      cuadrado.style.backgroundColor = '#000';
+    });
+  }
+}
 
 
 

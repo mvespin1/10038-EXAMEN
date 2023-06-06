@@ -8,3 +8,10 @@
   position: absolute;
   cursor: pointer;
 }
+
+#cuadrado1{
+  background: #000;
+  width: 200px;
+  height: 200px;
+
+}
