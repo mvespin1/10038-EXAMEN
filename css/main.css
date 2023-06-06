@@ -1260,10 +1260,10 @@ header .header-logo a {
   padding: 0;
   outline: 0;
   border: none;
-  width: 57px;
-  height: 27px;
-  background: url("../images/logo.png") no-repeat center;
-  background-size: 57px 27px;
+  width: 80px;
+  height: 80px;
+  background: url("../images/Logo_ESPE.png") no-repeat center;
+  background-size: 80px 80px;
   font: 0/0 a;
   text-shadow: none;
   color: transparent;
