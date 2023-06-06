@@ -15,3 +15,13 @@
   height: 200px;
 
 }
+
+#letras{
+  background-color: #8DCACB ;
+  width: 600px;
+  height: 100px;
+  font-size: 200%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

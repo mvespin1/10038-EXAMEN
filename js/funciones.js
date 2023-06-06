@@ -31,7 +31,7 @@ function pintar() {
   // Itera sobre todos los enlaces <a>
   for (var i = 0; i < links.length; i++) {
     // Agrega un evento 'mouseover' a cada enlace
-    links[i].addEventListener('mouseover', function() {
+    links[i].addEventListener('mouseover', function () {
       // Obtiene el color del atributo 'data-color' del enlace actual
       var color = this.getAttribute('data-color');
       // Asigna el color al fondo del cuadrado
@@ -39,19 +39,24 @@ function pintar() {
     });
 
     // Agrega un evento 'mouseout' a cada enlace
-    links[i].addEventListener('mouseout', function() {
+    links[i].addEventListener('mouseout', function () {
       // Restaura el fondo del cuadrado a color negro (#000)
       cuadrado.style.backgroundColor = '#000';
     });
   }
 }
 
+//segundo ejemplo
 
+function mDown(obj) {
+  obj.style.backgroundColor = "#8DCACB";
+  obj.innerHTML = "NRC: 10038"
+}
 
-
-
-
-
+function mUp(obj) {
+  obj.style.backgroundColor = "#35DC27";
+  obj.innerHTML = "Aplicaciones de Fundamentos WEB "
+}
 
 
 //nodos

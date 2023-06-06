@@ -56,8 +56,9 @@
 
 
                     <ul class="social-list list-inline mx-md-3 mx-lg-5 mb-0 d-none d-lg-flex">
-                        <li class="list-inline-item"><a href="https://www.youtube.com/watch?v=9Quezr60oBQ&list=PLYpKYlxlIcb-dRIvguLN1dR6ucUcnml4C"><i
-                            class="fab fa-youtube-square"></i></a></li>
+                        <li class="list-inline-item"><a
+                                href="https://www.youtube.com/watch?v=9Quezr60oBQ&list=PLYpKYlxlIcb-dRIvguLN1dR6ucUcnml4C"><i
+                                    class="fab fa-youtube-square"></i></a></li>
                     </ul>
                     <!--//social-list-->
 
@@ -252,7 +253,7 @@
                         </p>
                         <h2>Código de Eventos DOM:</h2>
                         <p>
-                            <b>Los eventos onmouseover y onmouseout</b> <br>
+                            <h3><b>Los eventos onmouseover y onmouseout</b></h3> <br>
                             Los eventos onmouseovery onmouseoutse pueden usar para activar una función cuando
                             el usuario pasa el mouse sobre o fuera de un elemento HTML:
                         </p>
@@ -310,12 +311,9 @@
                                                 style="color:mediumblue">&gt;</span></span></span></span>Azul<span
                                     style="color:brown"><span style="color:mediumblue">&lt;</span>/a<span
                                         style="color:mediumblue">&gt;</span></span> <br>
-                                <span style="color:brown"><span style="color:mediumblue">&lt;</span>a<span
-                                        style="color:red"> href<span style="color:mediumblue">="#"<span
-                                                style="color:red">data-color</span><span
-                                                style="color:mediumblue">="#f00"</span><span
-                                                style="color:mediumblue">&gt;</span></span></span></span>Rojo<span
-                                    style="color:brown"><span style="color:mediumblue">&lt;</span>/a<span
+                                <span style="color:brown"><span style="color:mediumblue">&lt;</span>div<span
+                                        style="color:red"> id<span style="color:mediumblue">="cuadrado1"<span
+                                    style="color:brown"><span style="color:mediumblue">&lt;</span>/div<span
                                         style="color:mediumblue">&gt;</span></span>
                             </div>
                         </div>
@@ -355,6 +353,80 @@
                                     </center>
                                     <div class="w3-center"><br>
                                         <span onclick="document.getElementById('id02').style.display='none'"
+                                            class="w3-button w3-xlarge w3-hover-red w3-display-topright"
+                                            title="Close Modal">&times;</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--//EVENTOS-->
+                    <section class="docs-section" id="item-1-2">
+                        <h3><b>Los eventos onmousedown, onmouseup y onclick</b></h3>
+                        <p>
+                            Los eventos onmousedown, onmouseupy onclickson todos partes de un clic del mouse.
+                            Primero, cuando se hace clic en un botón del mouse, se activa el evento onmousedown,
+                            luego, cuando se suelta el botón del mouse, se activa el evento onmouseup, finalmente,
+                            cuando se completa el clic del mouse, se activa el evento onclick.
+                        </p>
+
+                        <p>
+                            <b>Para demostrar cómo crear eventos HTML con JavaScript:</b> <br>
+                        <ul>
+                            <li>Creamos una página web simple</li>
+                            <li>Creamos un contenedor donde animación deben ser relativas a un elemento contenedor.</li>
+                        </ul>
+                        Dale estilo a los elementos: <br>
+                        </p>
+                        <div class="w3-example">
+                            <div class="w3-code notranslate cssHigh"><span class="cssselectorcolor" style="color:brown">
+                                    #letras <span class="cssdelimitercolor" style="color:black">{</span><span
+                                        class="csspropertycolor" style="color:red"><br>&nbsp;&nbsp;height<span
+                                            class="csspropertyvaluecolor" style="color:mediumblue"><span
+                                                class="cssdelimitercolor" style="color:black">:</span> 100px<span
+                                                class="cssdelimitercolor" class="cssdelimitercolor"
+                                                style="color:black">;</span></span><br>&nbsp; width<span
+                                            class="csspropertyvaluecolor" style="color:mediumblue"><span
+                                                class="cssdelimitercolor" style="color:black">:</span> 600px<span
+                                                class="cssdelimitercolor" style="color:black">;</span></span><br>&nbsp;
+                                        background<span class="csspropertyvaluecolor" style="color:mediumblue"><span
+                                                class="cssdelimitercolor" style="color:black">:</span> #8DCACB<span
+                                                class="cssdelimitercolor" style="color:black">;</span></span><br>
+                                    </span><span class="cssdelimitercolor" style="color:black">}</span></span>
+                            </div>
+                        </div>
+                        <h3><b>El código básico es:</b> </h3>
+                    </section>
+                    <!--//docs-intro-->
+
+                    <div class="docs-code-block" id="code">
+                        <pre class="shadow-lg rounded"><code class="javascript hljs"> 
+                            function mDown(obj) {
+                                obj.style.backgroundColor = "#8DCACB";
+                                obj.innerHTML = "NRC: 10038"
+                            }
+                              
+                            function mUp(obj) {
+                                obj.style.backgroundColor = "#35DC27";
+                                obj.innerHTML = "Aplicaciones de Fundamentos WEB "
+                            }
+                            </code></pre>
+
+                        <!-- MODAL EJEMPLO-->
+                        <div class="w3-container" id="modal">
+                            <button
+                                onclick="document.getElementById('id03').style.display='block'; mUp(this); mDown(this)"
+                                class="w3-button w3-green w3-large">Ejecutar</button>
+                            <div id="id03" class="w3-modal">
+                                <div class="w3-modal-content w3-card-4 w3-animate-zoom" style=" max-width:600px">
+                                    <center>
+                                        <div id="letras" onmousedown="mDown(this)" onmouseup="mUp(this)">
+                                            Aplicaciones de Fundamentos WEB</div>
+
+                                    </center>
+                                    <div class="w3-center"><br>
+                                        <span onclick="document.getElementById('id03').style.display='none'"
                                             class="w3-button w3-xlarge w3-hover-red w3-display-topright"
                                             title="Close Modal">&times;</span>
                                     </div>
