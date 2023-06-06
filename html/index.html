@@ -92,6 +92,8 @@
                     <li class="nav-item"><a class="nav-link scrollto" href="#item-1-4">DOM Navigation</a></li>
                     <li class="nav-item"><a class="nav-link scrollto" href="#item-1-5">DOM Nodes</a></li>
                     <li class="nav-item"><a class="nav-link scrollto" href="#item-1-6">DOM Collections</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="#item-1-7">DOM Node Lists</a></li>
+
 
 
 
@@ -803,10 +805,97 @@ document.getElementById("colec1").innerHTML = "El innerHTML se encuentra en el p
                 
                     </section>
 
-
-                   
-
                     <!--//FINAL COLECCIONES-->
+
+                    <!--//DOM Node Lists-->
+
+                    <br><br><section class="docs-section" id="item-1-7">
+                        <h2 class="section-heading">DOM Node Lists</h2>
+                        <p>El objeto "NodeList" consiste en una colección de nodos que son extraídos del documento HTML. Con respecto a su función, el "NodeList" es muy parecido con respecto a su funcionamiento con el "HTMLCollection".</p>
+                        <p>Con respecto a los navegadores más antiguos, esto se caracterizan por utilizar el objeto "NodeList" en lugar del "HTMLCollection", principalmente en métodos como el "getElementsByClassName()". Sin embargo, en la actualidad, se suelen utilizar estos dos objetos.</p>
+                        <p>Entre los métodos y ptopiedades que devuelve el objeto "NodeList" se tiene:</p>
+
+                        <ul>
+                            <li><strong>"childNodes".-</strong> Esta propiedad devuelve un objeto NodeList que contiene todos los nodos hijos de un elemento en el orden en que aparecen en el documento.</li>
+                            <li><strong>"querySelectorAll()".-</strong> Esta propiedad devuelve un objeto NodeList que contiene todos los elementos que coinciden con un selector CSS especificado.</li>
+                        </ul><br>
+
+                        <h4>Ejemplo 1.</h4>
+                        <div class="docs-code-block">
+                            <pre class="shadow-lg rounded"><code class="javascript hljs">const listaNodos = document.querySelectorAll("h7");
+
+document.getElementById("demoListaNodos1").innerHTML = "El primer párrafo es: " + listaNodos[0].innerHTML;
+document.getElementById("demoListaNodos2").innerHTML = "El segundo párrafo es: " + listaNodos[1].innerHTML;
+document.getElementById("demoListaNodos3").innerHTML = "El tercer párrafo es: " + listaNodos[2].innerHTML;
+document.getElementById("demoListaNodos4").innerHTML = "El cuarto párrafo es: " + listaNodos[3].innerHTML;
+document.getElementById("demoListaNodos5").innerHTML = "El quinto párrafo es: " + listaNodos[4].innerHTML;
+</code></pre>
+                        </div>
+
+                        <h7>Párrafo 1</h7><br>
+                        <h7>Párrafo 2</h7><br>
+                        <h7>Párrafo 3</h7><br>
+                        <h7>Párrafo 4</h7><br>
+                        <h7>Párrafo 5</h7><br><br>
+
+                        <p id="demoListaNodos1"></p>
+                        <p id="demoListaNodos2"></p>
+                        <p id="demoListaNodos3"></p>
+                        <p id="demoListaNodos4"></p>
+                        <p id="demoListaNodos5"></p>
+
+
+                        <br><h4>Longitud de las "NodeList" de un documento HTML.</h4>
+                        <p>La propiedad "lenght" permite definir el número de nodos que pertenecen a la lista de nodos.</p><br>
+
+
+                        <h4>Ejemplo 2.</h4>
+                        <div class="docs-code-block">
+                            <pre class="shadow-lg rounded"><code class="javascript hljs">const listaNodosEj2 = document.querySelectorAll("h8");
+
+document.getElementById("demoNodosEj2").innerHTML = "El documento contiene  " + listaNodosEj2.length + " párrafos.";
+</code></pre>
+                        </div>
+
+                        <h8>Párrafo 1</h8><br>
+                        <h8>Párrafo 2</h8><br>
+                        <h8>Párrafo 3</h8><br>
+                        <h8>Párrafo 4</h8><br>
+                        <h8>Párrafo 5</h8><br><br>
+
+                        <p id="demoNodosEj2"></p><br>
+
+                        <h4>Ejemplo 3.</h4>
+                        <div class="docs-code-block">
+                            <pre class="shadow-lg rounded"><code class="javascript hljs">const listaNodosEj2 = document.querySelectorAll("h8");
+
+document.getElementById("demoNodosEj2").innerHTML = "El documento contiene  " + listaNodosEj2.length + " párrafos.";
+</code></pre>
+                        </div>
+
+                        <h9>Párrafo 1</h9><br>
+                        <h9>Párrafo 2</h9><br>
+                        <h9>Párrafo 3</h9><br>
+                        <h9>Párrafo 4</h9><br>
+                        <h9>Párrafo 5</h9><br>
+
+                        <br><button onclick="cambioColorListaNodos()">Cambiar de color</button><br><br>
+
+                        <br><h4>Diferencias entre "HTMLCollection" y "NodeList".</h4>
+                        <p>Entre las principales diferencias entre "HTMLCollection" y "NodeList", se tiene:</p>
+
+                        <br><ul>
+                            <li>"HTMLCollection" se caracteriza por ser, como su nombre lo indica, una colección de elementos del documento HTML, en cambio la "NodeList" consiste en una lista o colección de los nodos del documento HTML, es decir que pueden ser de tipo texto, elementos o atributos.</li>
+                            <li>"HTMLCollection" son devueltos por métodos como getElementsByTagName() y getElementsByClassName(), mientras que la "NodeList" es devuelta por métodos como querySelectorAll() y la propiedad childNodes.</li>
+                            <li>Para acceder a los elementos de las "NodeList" se lo hace mediante su índice, en cambio, para tener acceso a las "HTMLCollection" se lo puede hacer mediante su nombre, id o índice.</li>
+                            <li>Por último, se tiene que las "HTMLCollection" son colecciones de tipo dinámica, mientras que las "NodeList" son estáticas. Es decir, que si se llega a agregar algún elemento en la colección, en el primer caso se va a actualizar de manera automática, en cambio en el caso de las listas de nodos, estas no se van a actualizar.</li>
+                        </ul>
+
+                    
+                    </section>
+
+                    <!--//FINAL DOM Node Lists-->
+
 
                     <footer class="footer">
                         <div class="container text-center py-5">

@@ -124,5 +124,26 @@ document.getElementById("parrafoEj4_1").innerHTML = document.getElementById("tit
 document.getElementById("parrafoEj4_2").innerHTML = document.getElementById("tituloEj4_2").nodeType;
 document.getElementById("parrafoEj4_3").innerHTML = document.getElementById("tituloEj4_3").nodeType;
 
+//EJEMPLO 1 NODE_LISTS
+const listaNodos = document.querySelectorAll("h7");
+
+document.getElementById("demoListaNodos1").innerHTML = "El primer párrafo es: " + listaNodos[0].innerHTML;
+document.getElementById("demoListaNodos2").innerHTML = "El segundo párrafo es: " + listaNodos[1].innerHTML;
+document.getElementById("demoListaNodos3").innerHTML = "El tercer párrafo es: " + listaNodos[2].innerHTML;
+document.getElementById("demoListaNodos4").innerHTML = "El cuarto párrafo es: " + listaNodos[3].innerHTML;
+document.getElementById("demoListaNodos5").innerHTML = "El quinto párrafo es: " + listaNodos[4].innerHTML;
+
+//EJEMPLO 2 NODE_LISTS
+const listaNodosEj2 = document.querySelectorAll("h8");
+
+document.getElementById("demoNodosEj2").innerHTML = "El documento contiene  " + listaNodosEj2.length + " párrafos.";
+
+//EJEMPLO 3 NODE_LISTS
+function cambioColorListaNodos() {
+  const listaNodosEj3 = document.querySelectorAll("h9");
+  for (let i = 0; i < listaNodosEj3.length; i++) {
+    listaNodosEj3[i].style.color = "greenyellow";
+  }
+}
 
 intro.style.backgroundColor = '#00FFFF';
