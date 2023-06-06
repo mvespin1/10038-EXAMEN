@@ -129,8 +129,7 @@
                             <b>Para demostrar cómo crear animaciones HTML con JavaScript:</b> <br>
                         <ul>
                             <li>Creamos una página web simple</li>
-                            <li>Creamos un contenedor de animacion el mismo que deben ser relativo a un elemento
-                                contenedor.</li>
+                            <li>Creamos un contenedor donde animación deben ser relativas a un elemento contenedor.</li>
                         </ul>
 
                         <p>
@@ -138,41 +137,30 @@
 
                         <ul>
                             <li>El elemento contenedor debe crearse con estilo = <b>" position: relative"</b> . </li>
-                            <li>El elemento de animación debe crearse con estilo = <b>" position: absolute"</b> .</li>
+                            <li>El elemento de train debe crearse con estilo = <b>" position: absolute"</b> .</li>
                         </ul>
                         <div class="w3-example">
                             <div class="w3-code notranslate cssHigh"><span class="cssselectorcolor" style="color:brown">
-                                    #container <span class="cssdelimitercolor" style="color:black">{</span><span
-                                        class="csspropertycolor" style="color:red"><br>&nbsp;&nbsp;width<span
+                                    #field <span class="cssdelimitercolor" style="color:black">{</span><span
+                                        class="csspropertycolor" style="color:red"><br>&nbsp;&nbsp;height<span
                                             class="csspropertyvaluecolor" style="color:mediumblue"><span
-                                                class="cssdelimitercolor" style="color:black">:</span> 400px<span
-                                                class="cssdelimitercolor"
-                                                style="color:black">;</span></span><br>&nbsp;&nbsp;height<span
-                                            class="csspropertyvaluecolor" style="color:mediumblue"><span
-                                                class="cssdelimitercolor" style="color:black">:</span>
-                                            400px<span class="cssdelimitercolor"
+                                                class="cssdelimitercolor" style="color:black">:</span> 200px<span
+                                                class="cssdelimitercolor" class="cssdelimitercolor"
                                                 style="color:black">;</span></span><br>&nbsp; position<span
                                             class="csspropertyvaluecolor" style="color:mediumblue"><span
                                                 class="cssdelimitercolor" style="color:black">:</span> relative<span
                                                 class="cssdelimitercolor" style="color:black">;</span></span><br>&nbsp;
-                                        background<span class="csspropertyvaluecolor" style="color:mediumblue"><span
-                                                class="cssdelimitercolor" style="color:black">:</span> yellow<span
+                                        border-bottom<span class="csspropertyvaluecolor" style="color:mediumblue"><span
+                                                class="cssdelimitercolor" style="color:black">:</span> black groove<span
                                                 class="cssdelimitercolor" style="color:black">;</span></span><br>
-                                    </span><span class="cssdelimitercolor" style="color:black">}</span><br>#animate
+                                    </span><span class="cssdelimitercolor" style="color:black">}</span><br>#train
                                     <span class="cssdelimitercolor" style="color:black">{</span><span
-                                        class="csspropertycolor" style="color:red"><br>&nbsp; width<span
-                                            class="csspropertyvaluecolor" style="color:mediumblue"><span
-                                                class="cssdelimitercolor" style="color:black">:</span> 50px<span
-                                                class="cssdelimitercolor" style="color:black">;</span></span><br>&nbsp;
-                                        height<span class="csspropertyvaluecolor" style="color:mediumblue"><span
-                                                class="cssdelimitercolor" style="color:black">:</span>
-                                            50px<span class="cssdelimitercolor"
-                                                style="color:black">;</span></span><br>&nbsp; position<span
+                                        class="cssdelimitercolor" style="color:red"><br>&nbsp; position<span
                                             class="csspropertyvaluecolor" style="color:mediumblue"><span
                                                 class="cssdelimitercolor" style="color:black">:</span> absolute<span
                                                 class="cssdelimitercolor" style="color:black">;</span></span><br>&nbsp;
-                                        background<span class="csspropertyvaluecolor" style="color:mediumblue"><span
-                                                class="cssdelimitercolor" style="color:black">:</span> red<span
+                                        cursor<span class="csspropertyvaluecolor" style="color:mediumblue"><span
+                                                class="cssdelimitercolor" style="color:black">:</span> pointer<span
                                                 class="cssdelimitercolor"
                                                 style="color:black">;</span></span><br></span><span
                                         class="cssdelimitercolor" style="color:black">}</span>
@@ -182,67 +170,68 @@
                         <h2>Código de animación:</h2> <br>
 
                         Las animaciones de JavaScript se realizan mediante la programación de cambios graduales en
-                        el estilo de un elemento.
+                        el estilo de un elemento. <br>
 
                         Los cambios son llamados por un temporizador. Cuando el intervalo del temporizador es
-                        pequeño, la animación parece continua.
+                        pequeño, la animación parece continua. <br>
+                        <h3><b>El código básico es:</b> </h3>
+                    </section>
 
-                        El código básico es:
-                         <!--//docs-intro-->
+                    <!--//docs-intro-->
 
-                    <div class="docs-code-block">
+                    <div class="docs-code-block" id="code">
                         <pre class="shadow-lg rounded"><code class="javascript hljs"> 
-                                function izquierda() {
-                                let id = null;
-                                const elem = document.getElementById("animate");   
-                                let pos = 0;
-                                clearInterval(id);
-                                id = setInterval(frame, 5);
-                                function frame() {
-                                  if (pos == 350) {
-                                    clearInterval(id);
-                                  } else {
-                                    pos++; 
-                                    elem.style.top = pos + "px"; 
-                                    elem.style.left = pos + "px"; 
-                                  }
-                                }
-                              }</code></pre>
+                            function animateTrain() {
+                                let start = Date.now();
+                                let train = document.getElementById('train');
+                              
+                                let timer = setInterval(function () {
+                                  let timePassed = Date.now() - start;
+                                  train.style.left = timePassed / 5 + 'px';
+                              
+                                  if (timePassed > 2000) clearInterval(timer);
+                                }, 20);
+                              }
+                              
+                              document.getElementById('train').onclick = animateTrain;
+                              
+                              document.getElementById('retryButton').onclick = function () {
+                                let train = document.getElementById('train');
+                                train.style.left = '0px';
+                                animateTrain();
+                              };</code></pre>
 
-                    </div>
-                    <!--//docs-code-block-->
-                    <!-- MODAL EJEMPLO-->
-                    <div class="w3-container">
-                        <button onclick="document.getElementById('id01').style.display='block'; izquierda()"
-                            class="w3-button w3-green w3-large">Ejecutar</button>
-                        <div id="id01" class="w3-modal">
-                            <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
-                                <br> <br>
-                                <center>
-                                    <div id="container">
-                                        <div id="animate"></div>
+                        <!-- MODAL EJEMPLO-->
+                        <div class="w3-container" id="modal">
+                            <button onclick="document.getElementById('id01').style.display='block'; animateTrain()"
+                                class="w3-button w3-green w3-large">Ejecutar</button>
+                            <div id="id01" class="w3-modal">
+                                <div class="w3-modal-content w3-card-4 w3-animate-zoom" id="modal1" style="max-width:600px">
+                                    <br> <br>
+
+                                    <div id="field">
+                                        <img id="train" src="https://js.cx/clipart/train.gif">
                                     </div>
-                                </center>
+                                    <div class="w3-center"><br>
+                                        <span onclick="document.getElementById('id01').style.display='none'"
+                                            class="w3-button w3-xlarge w3-hover-red w3-display-topright"
+                                            title="Close Modal">&times;</span>
+                                    </div>
 
-                                <div class="w3-center"><br>
-                                    <span onclick="document.getElementById('id01').style.display='none'"
-                                        class="w3-button w3-xlarge w3-hover-red w3-display-topright"
-                                        title="Close Modal">&times;</span>
-                                </div>
-
-                                <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-                                    <center><button type="submit" onclick="izquierda()" class="btn btn-info">Intentalo
-                                            otra vez</button>
-                                    </center>
+                                    <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                                        <center><button type="submit" onclick="animateTrain()"
+                                                class="btn btn-info">Intentalo
+                                                otra vez</button>
+                                        </center>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    </section>
 
-                   
+                    </div>
+                    <!--//docs-code-block-->
                     <!--//FINAL ANIMACIONES-->
-                    
+
                     <!--//EVENTOS-->
                     <section class="docs-section" id="item-1-2">
                         <h2 class="section-heading">Eventos DOM</h2>
@@ -252,42 +241,60 @@
                             clic en un botón, mover el cursor del mouse, presionar una tecla, entre otros. Aquí
                             tienes
                             un ejemplo básico de cómo manejar eventos en JavaScript utilizando el DOM:</p>
-                        
-                         <!--//docs-intro-->
 
-                    <div class="docs-code-block">
-                        <pre class="shadow-lg rounded"><code class="javascript hljs"> EN CONSTRUCCION !!!!</code></pre>
+                        <!--//docs-intro-->
 
-                    </div>
-                    <!--//docs-code-block-->
+                        <div class="docs-code-block">
+                            <pre
+                                class="shadow-lg rounded"><code class="javascript hljs"> EN CONSTRUCCION !!!!</code></pre>
+
+                        </div>
+                        <!--//docs-code-block-->
                     </section>
-              
+
                     <!--//FINAL EVENTOS-->
 
                     <!--//EventListener-->
 
                     <section class="docs-intro" id="item-1-3">
-                        <br><h2 class="section-heading">DOM EventListener</h2>
-                        <br><h3>El método addEventListener()</h3>
-                                                        
-                        <br><p>Debido a que los <strong>eventos</strong> de una página web corresponden a acciones que ocurren cuando existe la manipilación de la página por parte el navegador o el usuario, es importante contar con un controlador de eventos.</p>
-                        <p>El método <strong>addEventListener()</strong> permite la configuración de funciones para que estas sean llamadas cuando ocurra un evento específico, es decir que adjunta un controlador de eventos al elemento especificado.</p>
-                        
-                        <p>El método <strong>addEventListener()</strong> se caracteriza porque puede ser adjuntado a un elemento HTML para el que se necesita monitorear los eventos, además este elemento HTML puede tener más de un controlador.</p>
-                            
-                        <p>También cabe recalcar que el dectector de eventos puede ser eliminado mediante el método <strong>removeEventListener()</strong>.</p>
-                    
-                        <br><p>Sintaxis: <code>element.addEventListener(event, function, useCapture);</code></p>
+                        <br>
+                        <h2 class="section-heading">DOM EventListener</h2>
+                        <br>
+                        <h3>El método addEventListener()</h3>
 
-                        <br><p>Donde: </p>
+                        <br>
+                        <p>Debido a que los <strong>eventos</strong> de una página web corresponden a acciones que
+                            ocurren cuando existe la manipilación de la página por parte el navegador o el usuario, es
+                            importante contar con un controlador de eventos.</p>
+                        <p>El método <strong>addEventListener()</strong> permite la configuración de funciones para que
+                            estas sean llamadas cuando ocurra un evento específico, es decir que adjunta un controlador
+                            de eventos al elemento especificado.</p>
+
+                        <p>El método <strong>addEventListener()</strong> se caracteriza porque puede ser adjuntado a un
+                            elemento HTML para el que se necesita monitorear los eventos, además este elemento HTML
+                            puede tener más de un controlador.</p>
+
+                        <p>También cabe recalcar que el dectector de eventos puede ser eliminado mediante el método
+                            <strong>removeEventListener()</strong>.</p>
+
+                        <br>
+                        <p>Sintaxis: <code>element.addEventListener(event, function, useCapture);</code></p>
+
+                        <br>
+                        <p>Donde: </p>
 
                         <ul>
-                            <li><strong>"element".-</strong> Corresponde al elemento al que se va a adjuntar el "event listener".</li>
-                            <li><strong>"event".-</strong> Consiste en el evento que se realizará, o el evento que se quiere responder.</li>
-                            <li><strong>"function".-</strong> Se refiere a la función que será ejecutada cuando el evento ocurra.</li>
-                            <li><strong>"useCapture".-</strong> Consiste en un valor booleano (que puede tomar los valores de "true" y "false") que indica si el evento debe ser ejecutado en la fase de captura (T) o en la de burbujeo (F).</li>
+                            <li><strong>"element".-</strong> Corresponde al elemento al que se va a adjuntar el "event
+                                listener".</li>
+                            <li><strong>"event".-</strong> Consiste en el evento que se realizará, o el evento que se
+                                quiere responder.</li>
+                            <li><strong>"function".-</strong> Se refiere a la función que será ejecutada cuando el
+                                evento ocurra.</li>
+                            <li><strong>"useCapture".-</strong> Consiste en un valor booleano (que puede tomar los
+                                valores de "true" y "false") que indica si el evento debe ser ejecutado en la fase de
+                                captura (T) o en la de burbujeo (F).</li>
                         </ul>
-                    
+
                         <h4 class="heading">Ejemplo 1 (Agregar controlador de eventos a un elemento).</h4>
                         <div class="docs-code-block">
                             <pre class="shadow-lg rounded"><code class="javascript hljs">document.getElementById("boton").addEventListener("click", cambioColor);
@@ -299,11 +306,14 @@ div.style.backgroundColor = "skyblue";
 </code></pre>
                         </div>
                         <!--//docs-code-block-->
-                        <div id="division" style="width: 235px; height: 235px; background-color: greenyellow; border-radius: 500px;"></div>
+                        <div id="division"
+                            style="width: 235px; height: 235px; background-color: greenyellow; border-radius: 500px;">
+                        </div>
                         <br><button id="boton">Cambio de Color</button><br>
 
                         <!-- EJEMPLO 2 -->
-                        <br><h4 class="heading">Ejemplo 2 (Agregar muchos controladores de eventos a un elemento).</h4>
+                        <br>
+                        <h4 class="heading">Ejemplo 2 (Agregar muchos controladores de eventos a un elemento).</h4>
                         <div class="docs-code-block">
                             <pre class="shadow-lg rounded"><code class="javascript hljs">var x = document.getElementById("boton2");
 
@@ -328,13 +338,17 @@ div.style.backgroundColor = "orange";
 </code></pre>
                         </div>
                         <!--//docs-code-block-->
-                        <div id="division2" style="width: 235px; height: 235px; background-color: greenyellow; border-radius: 500px;"></div>
+                        <div id="division2"
+                            style="width: 235px; height: 235px; background-color: greenyellow; border-radius: 500px;">
+                        </div>
                         <br><button id="boton2">Cambio de Color</button><br>
 
 
                         <!-- EJEMPLO 3 -->
-                        <br><h4 class="heading">Ejemplo 3 (Agregar un controlador de eventos al objeto de la ventana).</h4>
-                        <br><h5>"Al dar clic en cualquier parte de la página, el tecto va a cambiar."</h5>
+                        <br>
+                        <h4 class="heading">Ejemplo 3 (Agregar un controlador de eventos al objeto de la ventana).</h4>
+                        <br>
+                        <h5>"Al dar clic en cualquier parte de la página, el tecto va a cambiar."</h5>
 
                         <div class="docs-code-block">
                             <pre class="shadow-lg rounded"><code class="javascript hljs">window.addEventListener("click", cambiarTexto);
@@ -350,7 +364,8 @@ var text = document.getElementById("demo3").innerHTML = "Texto Cambiado";
 
 
                         <!-- EJEMPLO 4 -->
-                        <br><h4 class="heading">Ejemplo 4 (Pasar valores de parámetros).</h4>
+                        <br>
+                        <h4 class="heading">Ejemplo 4 (Pasar valores de parámetros).</h4>
 
                         <div class="docs-code-block">
                             <pre class="shadow-lg rounded"><code class="javascript hljs">let texto1 = 'HOLA A ';
@@ -369,21 +384,36 @@ document.getElementById("demo4").innerHTML = a + b;
                         </div>
                         <!--//docs-code-block-->
                         <button id="boton4">Presionar</button><br>
-                        <br><h5 id="demo4"></h5>
+                        <br>
+                        <h5 id="demo4"></h5>
 
 
-                        <br><h4>Burbujeo y captura de Eventos</h4>
-                        <p>Antes de conocer acerca del burbujeo y captura de eventos, es necesario conocer en que consiste la propagación de eventos, pues esta consiste en la forma de definir el orden de los elementos cuando ocurre un evento.</p>
-                        <p>Por lo tanto, se puede decir que exiten dos tipo de propagación de los eventos en un DOM, la captura y el burbujeo.</p>
+                        <br>
+                        <h4>Burbujeo y captura de Eventos</h4>
+                        <p>Antes de conocer acerca del burbujeo y captura de eventos, es necesario conocer en que
+                            consiste la propagación de eventos, pues esta consiste en la forma de definir el orden de
+                            los elementos cuando ocurre un evento.</p>
+                        <p>Por lo tanto, se puede decir que exiten dos tipo de propagación de los eventos en un DOM, la
+                            captura y el burbujeo.</p>
 
-                        <br><ul>
-                            <li><strong>Burbujeo de Eventos.-</strong> Consiste en el tipo de propagación de eventos que va desde el elemento más interno hasta el elemento más externo.</li>
-                            <li><strong>Captura de Eventos.-</strong> Al contrario que el burbujeo de elementos, este consiste en una propagación que va desde el elemento más externon hasta el más interno.</li>
+                        <br>
+                        <ul>
+                            <li><strong>Burbujeo de Eventos.-</strong> Consiste en el tipo de propagación de eventos que
+                                va desde el elemento más interno hasta el elemento más externo.</li>
+                            <li><strong>Captura de Eventos.-</strong> Al contrario que el burbujeo de elementos, este
+                                consiste en una propagación que va desde el elemento más externon hasta el más interno.
+                            </li>
                         </ul>
 
-                        <br><p>Para especificar el tipo de propagación mediante el método <strong>addEventListener()</strong>, se debe utilizar el parámetro <strong>"useCapture"</strong>, el cual, cundo tome un valor de "false", se definirá una propagación de burbujeo. Por lo contrario, si este parámetro toma el valor de "true", se definirá una propagación de tipo captura.</p>
+                        <br>
+                        <p>Para especificar el tipo de propagación mediante el método
+                            <strong>addEventListener()</strong>, se debe utilizar el parámetro
+                            <strong>"useCapture"</strong>, el cual, cundo tome un valor de "false", se definirá una
+                            propagación de burbujeo. Por lo contrario, si este parámetro toma el valor de "true", se
+                            definirá una propagación de tipo captura.</p>
 
-                        <br><h4 class="heading">Ejemplo 5.</h4>
+                        <br>
+                        <h4 class="heading">Ejemplo 5.</h4>
 
                         <div class="docs-code-block">
                             <pre class="shadow-lg rounded"><code class="javascript hljs">document.getElementById("divisionEj5_2").addEventListener("click", function() {
@@ -406,23 +436,32 @@ alert("CIRCULO VERDE");
                         </div>
                         <!--//docs-code-block-->
 
-                        <p>Al presionar los círculos negros, se indicarán el orden de los colores dependiendo el tipo de propagación, ya sea "Burbujeo de eventos" o "Captura de eventos".</p>
+                        <p>Al presionar los círculos negros, se indicarán el orden de los colores dependiendo el tipo de
+                            propagación, ya sea "Burbujeo de eventos" o "Captura de eventos".</p>
 
-                        <div id="divisionEj5_1" style="width: 235px; height: 235px; background-color: greenyellow; border-radius: 500px; display: flex; justify-content: center; align-items: center;">
-                            <div id="divisionEj5_2" style="width: 100px; height: 100px; background-color: black; border-radius: 500px;"></div>
+                        <div id="divisionEj5_1"
+                            style="width: 235px; height: 235px; background-color: greenyellow; border-radius: 500px; display: flex; justify-content: center; align-items: center;">
+                            <div id="divisionEj5_2"
+                                style="width: 100px; height: 100px; background-color: black; border-radius: 500px;">
+                            </div>
                         </div><br>
 
-                        <div id="divisionEj5_3" style="width: 235px; height: 235px; background-color: greenyellow; border-radius: 500px; display: flex; justify-content: center; align-items: center;">
-                            <div id="divisionEj5_4" style="width: 100px; height: 100px; background-color: black; border-radius: 500px;"></div>
+                        <div id="divisionEj5_3"
+                            style="width: 235px; height: 235px; background-color: greenyellow; border-radius: 500px; display: flex; justify-content: center; align-items: center;">
+                            <div id="divisionEj5_4"
+                                style="width: 100px; height: 100px; background-color: black; border-radius: 500px;">
+                            </div>
                         </div><br>
 
                         <!-- EJEMPLO 5 -->
 
-                        <br><h4>El método removeEventListener()</h4>
+                        <br>
+                        <h4>El método removeEventListener()</h4>
 
 
                         <!-- EJEMPLO 6 -->
-                        <br><h4 class="heading">Ejemplo 6</h4>
+                        <br>
+                        <h4 class="heading">Ejemplo 6</h4>
 
                         <div class="docs-code-block">
                             <pre class="shadow-lg rounded"><code class="javascript hljs">document.getElementById("division6").addEventListener("mouseover", cambioColor6);
@@ -440,7 +479,9 @@ div.style.backgroundColor = "greenyellow";
 </code></pre>
                         </div>
                         <!--//docs-code-block-->
-                        <div id="division6" style="width: 235px; height: 235px; background-color: greenyellow; border-radius: 500px;"></div>
+                        <div id="division6"
+                            style="width: 235px; height: 235px; background-color: greenyellow; border-radius: 500px;">
+                        </div>
                         <br><button onclick="removerFuncionColor()" id="boton6">Remover</button><br>
 
                     </section>
@@ -449,33 +490,53 @@ div.style.backgroundColor = "greenyellow";
 
                     <!--//DOM Navigation-->
 
-                    <br><section class="docs-section" id="item-1-4">
+                    <br>
+                    <section class="docs-section" id="item-1-4">
                         <h2 class="section-heading">DOM Navigation</h2>
-                        <p>Debido a que el término "DOM" (Modelo de Objeto de Documentos) por su significado en español, se refiere a la estructura jerárquica del documento HTML, es posible navegar por este mediante el uso de las relaciones de sus nodos.</p>
-                    
-                        <br><h3>Nodos DOM</h3>
-                        <p>Los nodos del documento HTML se refieren a todos los componentes que conforman el DOM, es decir, que los nodos consisten en los atributos, textos, comentarios y elementos que conforman el DOM. Además, cabe recalcar que estos nodos son estructuran en forma de árbol.</p>
+                        <p>Debido a que el término "DOM" (Modelo de Objeto de Documentos) por su significado en español,
+                            se refiere a la estructura jerárquica del documento HTML, es posible navegar por este
+                            mediante el uso de las relaciones de sus nodos.</p>
+
+                        <br>
+                        <h3>Nodos DOM</h3>
+                        <p>Los nodos del documento HTML se refieren a todos los componentes que conforman el DOM, es
+                            decir, que los nodos consisten en los atributos, textos, comentarios y elementos que
+                            conforman el DOM. Además, cabe recalcar que estos nodos son estructuran en forma de árbol.
+                        </p>
                         <p>Entre los principales tipos de nodos de un DOM se tiene:</p>
 
                         <ul>
-                            <li><strong>"Elementos".-</strong> Se refieren a las etiquetas principales que conforman la estructura del domcumento HTML. Entre los más representativos se tiene: "div", "p", "table", entre otros.</li>
-                            <li><strong>"Atributos".-</strong> Consisten en aquellos atributos que de un elemento del documento HTML. Por ejemplo los "href", "src", "style" que suelen encontrarse dentro de las etiquetas de un DOM.</li>
-                            <li><strong>"Textos".-</strong> Se refiere a los textos que se encuentran dentro de los elementos.</li>
-                            <li><strong>"Comentarios".-</strong> Consisten en los comentarios que por lo general ayudan a estructurar de mejor manera el código de la página web.</li>
+                            <li><strong>"Elementos".-</strong> Se refieren a las etiquetas principales que conforman la
+                                estructura del domcumento HTML. Entre los más representativos se tiene: "div", "p",
+                                "table", entre otros.</li>
+                            <li><strong>"Atributos".-</strong> Consisten en aquellos atributos que de un elemento del
+                                documento HTML. Por ejemplo los "href", "src", "style" que suelen encontrarse dentro de
+                                las etiquetas de un DOM.</li>
+                            <li><strong>"Textos".-</strong> Se refiere a los textos que se encuentran dentro de los
+                                elementos.</li>
+                            <li><strong>"Comentarios".-</strong> Consisten en los comentarios que por lo general ayudan
+                                a estructurar de mejor manera el código de la página web.</li>
                         </ul><br>
 
-                        <p>A continuación se puede apreciar un ejemplo de una estructura de árbol con sus respectivos nodos de DOM.</p><br>
+                        <p>A continuación se puede apreciar un ejemplo de una estructura de árbol con sus respectivos
+                            nodos de DOM.</p><br>
                         <img src="../images/imgNavegationDOM1.jpg" alt="Árbol"><br><br><br>
 
-                        <br><h3>Relaciones entre los nodos.</h3>
-                        <p>El tipo de relación entre los nodos que conforman el árbol del documento HTML se caracterizan por tener un tipo de relación jerárquica como se lo indicó anteriormente.</p>
+                        <br>
+                        <h3>Relaciones entre los nodos.</h3>
+                        <p>El tipo de relación entre los nodos que conforman el árbol del documento HTML se caracterizan
+                            por tener un tipo de relación jerárquica como se lo indicó anteriormente.</p>
                         <p>Entre las relaciones más importantes se tiene:</p>
 
                         <ul>
-                            <li>Cada nodo, excepto el nodo raíz, tiene un nodo padre. El nodo padre es el nodo inmediatamente superior en la jerarquía.</li>
-                            <li>Los nodos que tienen el mismo nodo padre se llaman nodos hermanos. Esto significa que comparten el mismo nivel de jerarquía en el árbol.</li>
-                            <li>Los nodos que se encuentran en niveles inferiores en el árbol, ya sea directamente como hijos o en niveles más profundos, se llaman nodos descendientes. </li>
-                            <li>Los nodos que están en niveles superiores en el árbol y son antecesores de un nodo en particular se llaman nodos ancestros.</li>
+                            <li>Cada nodo, excepto el nodo raíz, tiene un nodo padre. El nodo padre es el nodo
+                                inmediatamente superior en la jerarquía.</li>
+                            <li>Los nodos que tienen el mismo nodo padre se llaman nodos hermanos. Esto significa que
+                                comparten el mismo nivel de jerarquía en el árbol.</li>
+                            <li>Los nodos que se encuentran en niveles inferiores en el árbol, ya sea directamente como
+                                hijos o en niveles más profundos, se llaman nodos descendientes. </li>
+                            <li>Los nodos que están en niveles superiores en el árbol y son antecesores de un nodo en
+                                particular se llaman nodos ancestros.</li>
                         </ul><br>
 
                         <h4>Ejemplo donde se indican las relaciones entre los nodos del árbol.</h4>
@@ -510,30 +571,38 @@ div.style.backgroundColor = "greenyellow";
                         </ul><br>
 
 
-                        <br><h3>Navegación entre los Nodos DOM</h3>
+                        <br>
+                        <h3>Navegación entre los Nodos DOM</h3>
                         <p>Para navegar entre los nodos, se pueden utilizar las siguientes propiedades:</p>
 
                         <ul>
                             <li><strong>"parentNode".-</strong> Devuelve el nodo padre del nodo actual.</li>
-                            <li><strong>"childNodes".-</strong> Devuelve una lista de los nodos hijos del nodo actual.</li>
-                            <li><strong>"innerHTML".-</strong> Permite acceder o modificar el contenido HTML dentro del nodo.</li>
-                            <li><strong>"setAttribute().-"</strong> Permite establecer el valor de un atributo en un nodo.</li>
+                            <li><strong>"childNodes".-</strong> Devuelve una lista de los nodos hijos del nodo actual.
+                            </li>
+                            <li><strong>"innerHTML".-</strong> Permite acceder o modificar el contenido HTML dentro del
+                                nodo.</li>
+                            <li><strong>"setAttribute().-"</strong> Permite establecer el valor de un atributo en un
+                                nodo.</li>
                             <li><strong>"appendChild()".-</strong> Agrega un nuevo nodo como hijo del nodo actual.</li>
                             <li><strong>"removeChild()".-</strong> Elimina un nodo hijo del nodo actual.</li>
                         </ul><br>
 
-                        <p>A continuación se presenta tres maneras o formas para acceder al valor de un nodo de tipo texto:</p>
+                        <p>A continuación se presenta tres maneras o formas para acceder al valor de un nodo de tipo
+                            texto:</p>
 
                         <div class="docs-code-block">
-                            <pre class="shadow-lg rounded"><code class="javascript hljs">titulo = document.getElementById("demo").innerHTML;</code></pre>
+                            <pre
+                                class="shadow-lg rounded"><code class="javascript hljs">titulo = document.getElementById("demo").innerHTML;</code></pre>
                         </div>
 
                         <div class="docs-code-block">
-                            <pre class="shadow-lg rounded"><code class="javascript hljs">titulo = document.getElementById("demo").firstChild.nodeValue;</code></pre>
+                            <pre
+                                class="shadow-lg rounded"><code class="javascript hljs">titulo = document.getElementById("demo").firstChild.nodeValue;</code></pre>
                         </div>
 
                         <div class="docs-code-block">
-                            <pre class="shadow-lg rounded"><code class="javascript hljs">titulo = document.getElementById("demo").childNodes[0].nodeValue;</code></pre>
+                            <pre
+                                class="shadow-lg rounded"><code class="javascript hljs">titulo = document.getElementById("demo").childNodes[0].nodeValue;</code></pre>
                         </div>
 
                         <h4 class="heading">Ejemplo 1</h4>
@@ -548,15 +617,18 @@ document.getElementById("hijo2").innerHTML = valorNodoHijo;
                         <p id="hijo2"></p>
 
 
-                        <br><h3>Nodos Raíz DOM</h3>
+                        <br>
+                        <h3>Nodos Raíz DOM</h3>
                         <p>Entre las propiedades que permiten el tener acceso al documento completo se tiene:</p>
 
                         <ul>
-                            <li><strong>"document.documentElement".-</strong> Se refiere al cuerpo (body) del documento.</li>
+                            <li><strong>"document.documentElement".-</strong> Se refiere al cuerpo (body) del documento.
+                            </li>
                             <li><strong>"document.body".-</strong> Consiste en el documento completo.</li>
                         </ul>
 
-                        <p>En los siguientes ejemplos se indican las propiedades que permiten el tener acceso al cuerpo completo del documento HTML.</p><br>
+                        <p>En los siguientes ejemplos se indican las propiedades que permiten el tener acceso al cuerpo
+                            completo del documento HTML.</p><br>
 
                         <h4 class="heading">Ejemplo 2</h4>
                         <div class="docs-code-block">
@@ -574,9 +646,13 @@ document.getElementById("hijo2").innerHTML = valorNodoHijo;
 
                         </div>
 
-                        <br><h3>Propiedad "nodeName"</h3>
-                        <p>"nodeName" se refiere a aquella propiedad que se encuentra que cada uno de los nodos del documento HTML, y tiene la función principal de devolver el nombre del nodo al que se le hace referencia.</p>
-                        <p>A continuación, con los siguientes ejemplos se indicará el funcionamiento de esta propiedad:</p><br>
+                        <br>
+                        <h3>Propiedad "nodeName"</h3>
+                        <p>"nodeName" se refiere a aquella propiedad que se encuentra que cada uno de los nodos del
+                            documento HTML, y tiene la función principal de devolver el nombre del nodo al que se le
+                            hace referencia.</p>
+                        <p>A continuación, con los siguientes ejemplos se indicará el funcionamiento de esta propiedad:
+                        </p><br>
 
                         <h4 class="heading">Ejemplo 4</h4>
                         <div class="docs-code-block">
@@ -590,37 +666,61 @@ document.getElementById("hijo2").innerHTML = valorNodoHijo;
                         <h5 id="titulo">HOLA MUNDO</h5>
                         <p id="parrafo"></p>
 
-                        <br><h3>Propiedad "nodeValue"</h3>
-                        <p>"nodeValue" es la propiedad que se catacteriza por devolver el valor del nodo, dependiendo del tipo de nodo al que se aplique. Debido a esto, es necesario tomar en cuenta los siguientes aspectos:</p>
+                        <br>
+                        <h3>Propiedad "nodeValue"</h3>
+                        <p>"nodeValue" es la propiedad que se catacteriza por devolver el valor del nodo, dependiendo
+                            del tipo de nodo al que se aplique. Debido a esto, es necesario tomar en cuenta los
+                            siguientes aspectos:</p>
 
                         <ul>
                             <li>La propiedad "nodeValue" para los nodos de tipo "atributo", será el mismo atributo.</li>
                             <li>La propiedad "nodeValue" para los nodos de tipo "texto", será el mismo texto.</li>
-                            <li>La propiedad "nodeValue" para los nodos de tipo "elemento", será el valor de "null".</li>
+                            <li>La propiedad "nodeValue" para los nodos de tipo "elemento", será el valor de "null".
+                            </li>
                         </ul>
 
-                        <br><h3>Propiedad "nodeType"</h3>
-                        <p>"nodeType" se refiere a aquella propiedad que es utilizada para determinar el tipo del nodo al que se hace referencia, mediante la proporción de un valor numérico entero respectivo al tipo de nodo.</p>
+                        <br>
+                        <h3>Propiedad "nodeType"</h3>
+                        <p>"nodeType" se refiere a aquella propiedad que es utilizada para determinar el tipo del nodo
+                            al que se hace referencia, mediante la proporción de un valor numérico entero respectivo al
+                            tipo de nodo.</p>
                         <p>A continuación, se presentan los tipos de nodos y sus valores correspondientes:</p>
 
                         <ul>
-                            <li><strong>"(1) Node.ELEMENT_NODE".-</strong> Representa un nodo de tipo elemento del documento HTML, por ejemplo: "table", "div", "h5", "p", entre otros.</li>
-                            <li><strong>"(2) Node.ATTRIBUTE_NODE".-</strong> Representa un nodo de atributo de elemento. Por ejemplo, "href", "src", "class", entre otros.</li>
-                            <li><strong>"(3) Node.TEXT_NODE".-</strong> Representa un nodo de texto. Contiene el contenido de texto dentro de un elemento. Por ejemplo, "Hola mundo".</li>
-                            <li><strong>"(4) Node.CDATA_SECTION_NODE".-</strong> Representa un nodo de sección CDATA. Se utiliza para insertar contenido no interpretado en XML o XHTML.</li>
-                            <li><strong>"(5) Node.ENTITY_REFERENCE_NODE".-</strong> Representa un nodo de referencia a entidad. Se utiliza para representar una referencia a una entidad en el documento.</li>
-                            <li><strong>"(6) Node.ENTITY_NODE".-</strong> Representa un nodo de entidad. Se utiliza para representar una entidad en el documento.</li>
-                            <li><strong>"(7) Node.PROCESSING_INSTRUCTION_NODE".-</strong> Representa un nodo de instrucción de procesamiento. Se utiliza para representar una instrucción de procesamiento en el documento.</li>
-                            <li><strong>"(8) Node.COMMENT_NODE".-</strong> Representa un nodo de comentario. Se utiliza para representar un comentario en el documento.</li>
-                            <li><strong>"(9) Node.DOCUMENT_NODE".-</strong> Representa el nodo de documento que es el nodo raíz del árbol del DOM.</li>
-                            <li><strong>"(10) Node.DOCUMENT_TYPE_NODE".-</strong> Representa un nodo de tipo de documento. Se utiliza para representar la declaración de tipo de documento (DTD) en el documento./li>
-                            <li><strong>"(11) Node.DOCUMENT_FRAGMENT_NODE".-</strong> Representa un nodo de fragmento de documento. Se utiliza para representar un fragmento de documento independiente.</li>
-                            <li><strong>"(12) Node.NOTATION_NODE".-</strong> Representa un nodo de notación. Se utiliza para representar una notación en el documento.</li>
+                            <li><strong>"(1) Node.ELEMENT_NODE".-</strong> Representa un nodo de tipo elemento del
+                                documento HTML, por ejemplo: "table", "div", "h5", "p", entre otros.</li>
+                            <li><strong>"(2) Node.ATTRIBUTE_NODE".-</strong> Representa un nodo de atributo de elemento.
+                                Por ejemplo, "href", "src", "class", entre otros.</li>
+                            <li><strong>"(3) Node.TEXT_NODE".-</strong> Representa un nodo de texto. Contiene el
+                                contenido de texto dentro de un elemento. Por ejemplo, "Hola mundo".</li>
+                            <li><strong>"(4) Node.CDATA_SECTION_NODE".-</strong> Representa un nodo de sección CDATA. Se
+                                utiliza para insertar contenido no interpretado en XML o XHTML.</li>
+                            <li><strong>"(5) Node.ENTITY_REFERENCE_NODE".-</strong> Representa un nodo de referencia a
+                                entidad. Se utiliza para representar una referencia a una entidad en el documento.</li>
+                            <li><strong>"(6) Node.ENTITY_NODE".-</strong> Representa un nodo de entidad. Se utiliza para
+                                representar una entidad en el documento.</li>
+                            <li><strong>"(7) Node.PROCESSING_INSTRUCTION_NODE".-</strong> Representa un nodo de
+                                instrucción de procesamiento. Se utiliza para representar una instrucción de
+                                procesamiento en el documento.</li>
+                            <li><strong>"(8) Node.COMMENT_NODE".-</strong> Representa un nodo de comentario. Se utiliza
+                                para representar un comentario en el documento.</li>
+                            <li><strong>"(9) Node.DOCUMENT_NODE".-</strong> Representa el nodo de documento que es el
+                                nodo raíz del árbol del DOM.</li>
+                            <li><strong>"(10) Node.DOCUMENT_TYPE_NODE".-</strong> Representa un nodo de tipo de
+                                documento. Se utiliza para representar la declaración de tipo de documento (DTD) en el
+                                documento./li>
+                            <li><strong>"(11) Node.DOCUMENT_FRAGMENT_NODE".-</strong> Representa un nodo de fragmento de
+                                documento. Se utiliza para representar un fragmento de documento independiente.</li>
+                            <li><strong>"(12) Node.NOTATION_NODE".-</strong> Representa un nodo de notación. Se utiliza
+                                para representar una notación en el documento.</li>
                         </ul>
 
-                        <br><p>En el siguiente ejemplo se indica el valor del tipo de nodo de los "TÍTULOS", el cual va a ser de valor "1", debido a que los títulos son de tipo "h".</p>
+                        <br>
+                        <p>En el siguiente ejemplo se indica el valor del tipo de nodo de los "TÍTULOS", el cual va a
+                            ser de valor "1", debido a que los títulos son de tipo "h".</p>
 
-                        <br><h4 class="heading">Ejemplo 5</h4>
+                        <br>
+                        <h4 class="heading">Ejemplo 5</h4>
                         <div class="docs-code-block">
                             <pre class="shadow-lg rounded"><code class="javascript hljs">document.getElementById("parrafoEj4_1").innerHTML = document.getElementById("tituloEj4_1").nodeType;
 
@@ -643,33 +743,45 @@ document.getElementById("parrafoEj4_3").innerHTML = document.getElementById("tit
                     </section>
 
                     <!--//FIN DOM Navigation-->
-                    
+
                     <!--//NODOS-->
                     <section class="docs-section" id="item-1-5">
                         <h2 class="section-heading">Elementos JavaScript HTML DOM (NODOS)</h2>
-                        <p>Un navegador web crea una representación interna del código HTML como un árbol de nodos y a esto lo denominamos DOM (Document Object Model). Los nodos se pueden clasificar en diferentes tipos, dentro de los cuales los principales tipos son: document, element, text y “otros”.</p>
+                        <p>Un navegador web crea una representación interna del código HTML como un árbol de nodos y a
+                            esto lo denominamos DOM (Document Object Model). Los nodos se pueden clasificar en
+                            diferentes tipos, dentro de los cuales los principales tipos son: document, element, text y
+                            “otros”.</p>
 
                         <p>Los principales tipos de nodos en el DOM son:<br><br>
 
-                        a) Document: el nodo document es el nodo raíz, a partir del cual derivan el resto de nodos.<br>
+                            a) Document: el nodo document es el nodo raíz, a partir del cual derivan el resto de
+                            nodos.<br>
 
-                        b) Element: son los nodos definidos por etiquetas html. Por ejemplo una etiqueta div genera un nodo. Si dentro de ese div tenemos tres etiquetas p, dichas etiquetas definen nodos hijos de la etiqueta div.<br>
+                            b) Element: son los nodos definidos por etiquetas html. Por ejemplo una etiqueta div genera
+                            un nodo. Si dentro de ese div tenemos tres etiquetas p, dichas etiquetas definen nodos hijos
+                            de la etiqueta div.<br>
 
-                        c) Text: el texto dentro de un nodo element se considera un nuevo nodo hijo de tipo text (texto). Los navegadores también crean nodos tipo texto sin contenido para representar elementos como saltos de línea o espacios vacíos.<br>
+                            c) Text: el texto dentro de un nodo element se considera un nuevo nodo hijo de tipo text
+                            (texto). Los navegadores también crean nodos tipo texto sin contenido para representar
+                            elementos como saltos de línea o espacios vacíos.<br>
 
-                        d) Attribute: los atributos de las etiquetas definen nodos, aunque trabajando con JavaScript no los veremos como nodos, sino que lo consideramos información asociada al nodo de tipo element.<br>
+                            d) Attribute: los atributos de las etiquetas definen nodos, aunque trabajando con JavaScript
+                            no los veremos como nodos, sino que lo consideramos información asociada al nodo de tipo
+                            element.<br>
 
-                        e) Comentarios y otros: los comentarios y otros elementos como las declaraciones doctype en cabecera de los documentos HTML generan nodos.</p>
+                            e) Comentarios y otros: los comentarios y otros elementos como las declaraciones doctype en
+                            cabecera de los documentos HTML generan nodos.</p>
 
                         <p>Adición y eliminación de nodos (elementos HTML)<br><br>
 
-                        Creación de nuevos elementos HTML (nodos):<br>
-                        Para agregar un nuevo elemento al HTML DOM, primero debe crear el elemento (nodo de elemento) y luego agregarlo a un elemento existente.</p>
-                        
+                            Creación de nuevos elementos HTML (nodos):<br>
+                            Para agregar un nuevo elemento al HTML DOM, primero debe crear el elemento (nodo de
+                            elemento) y luego agregarlo a un elemento existente.</p>
+
                         <!--//docs-intro-->
 
-                    <div class="docs-code-block">
-                        <pre class="shadow-lg rounded"><code class="javascript hljs"> 
+                        <div class="docs-code-block">
+                            <pre class="shadow-lg rounded"><code class="javascript hljs"> 
 
                             const para = document.createElement("p");
                             const node = document.createTextNode("Parrafo de prueba añadido mediante nodo");
@@ -679,40 +791,67 @@ document.getElementById("parrafoEj4_3").innerHTML = document.getElementById("tit
 
                     </code></pre>
 
-                    </div>
-                    <!--//docs-code-block-->
-                            <h3>Demo 1</h3>
-                            <p>Añadir nuevo elemento.</p>
-                            <div id="cont2"></div>
-                            <!--<button type="button" onclick="mostrarimg()">Mostrar</button>-->
-                            
-                            <div id="div1.1">
+                        </div>
+                        <!--//docs-code-block-->
+                        <h3>Demo 1</h3>
+                        <p>Añadir nuevo elemento.</p>
+                        <div id="cont2"></div>
+                        <!--<button type="button" onclick="mostrarimg()">Mostrar</button>-->
+
+                        <div id="div1.1">
                             <p id="p1">Este es un parrafo de muestra 1</p>
                             <p id="p2">Este es un parrafo de muestra 2</p>
-                            </div>
-                       
-                        
-                            
-                    <p><br><br>
+                        </div>
+
+
+
+                        <p><br><br>
 
                         <p>Para eliminar un elemento HTML, utilice el remove() método:</p><br>
                         <!--//docs-intro-->
                         <div class="w3-code notranslate htmlHigh">
-                        <span class="tagnamecolor" style="color:brown"><span class="tagcolor" style="color:mediumblue">&lt;</span>div<span class="tagcolor" style="color:mediumblue">&gt;</span></span><br>
-                        &nbsp;
-                        <span class="tagnamecolor" style="color:brown"><span class="tagcolor" style="color:mediumblue">&lt;</span>p<span class="attributecolor" style="color:red"> id<span class="attributevaluecolor" style="color:mediumblue">="p1.1"</span></span><span class="tagcolor" style="color:mediumblue">&gt;</span></span>Parrafo de muestra 1.<span class="tagnamecolor" style="color:brown"><span class="tagcolor" style="color:mediumblue">&lt;</span>/p<span class="tagcolor" style="color:mediumblue">&gt;</span></span><br>
-                        &nbsp;
-                        <span class="tagnamecolor" style="color:brown"><span class="tagcolor" style="color:mediumblue">&lt;</span>p<span class="attributecolor" style="color:red"> id<span class="attributevaluecolor" style="color:mediumblue">="p2.2"</span></span><span class="tagcolor" style="color:mediumblue">&gt;</span></span>Parrafo de muestra 2.<span class="tagnamecolor" style="color:brown"><span class="tagcolor" style="color:mediumblue">&lt;</span>/p<span class="tagcolor" style="color:mediumblue">&gt;</span></span><br>
-                        <span class="tagnamecolor" style="color:brown"><span class="tagcolor" style="color:mediumblue">&lt;</span>/div<span class="tagcolor" style="color:mediumblue">&gt;</span></span><br><br><span class="tagnamecolor" style="color:brown"><span class="tagcolor" style="color:mediumblue">&lt;</span>script<span class="tagcolor" style="color:mediumblue">&gt;</span></span><span class="jscolor" style="color:black"><br>
-                        <span class="jskeywordcolor" style="color:mediumblue">const</span> elmnt = document.<span class="jspropertycolor" style="color:black">getElementById</span>(<span class="jsstringcolor" style="color:brown">"p1"</span>);
-                        elmnt.<span class="jspropertycolor" style="color:black">remove</span>();<br>
-                        </span><span class="tagnamecolor" style="color:brown"><span class="tagcolor" style="color:mediumblue">&lt;</span>/script<span class="tagcolor" style="color:mediumblue">&gt;</span></span> </div>
-                    
-                     <!--//docs-code-block-->
-                            <h3>Demo 2</h3>
-                            <h4>Eliminar elemento.</h4>
-                            <div id="cont2"></div>
-                            
+                            <span class="tagnamecolor" style="color:brown"><span class="tagcolor"
+                                    style="color:mediumblue">&lt;</span>div<span class="tagcolor"
+                                    style="color:mediumblue">&gt;</span></span><br>
+                            &nbsp;
+                            <span class="tagnamecolor" style="color:brown"><span class="tagcolor"
+                                    style="color:mediumblue">&lt;</span>p<span class="attributecolor" style="color:red">
+                                    id<span class="attributevaluecolor"
+                                        style="color:mediumblue">="p1.1"</span></span><span class="tagcolor"
+                                    style="color:mediumblue">&gt;</span></span>Parrafo de muestra 1.<span
+                                class="tagnamecolor" style="color:brown"><span class="tagcolor"
+                                    style="color:mediumblue">&lt;</span>/p<span class="tagcolor"
+                                    style="color:mediumblue">&gt;</span></span><br>
+                            &nbsp;
+                            <span class="tagnamecolor" style="color:brown"><span class="tagcolor"
+                                    style="color:mediumblue">&lt;</span>p<span class="attributecolor" style="color:red">
+                                    id<span class="attributevaluecolor"
+                                        style="color:mediumblue">="p2.2"</span></span><span class="tagcolor"
+                                    style="color:mediumblue">&gt;</span></span>Parrafo de muestra 2.<span
+                                class="tagnamecolor" style="color:brown"><span class="tagcolor"
+                                    style="color:mediumblue">&lt;</span>/p<span class="tagcolor"
+                                    style="color:mediumblue">&gt;</span></span><br>
+                            <span class="tagnamecolor" style="color:brown"><span class="tagcolor"
+                                    style="color:mediumblue">&lt;</span>/div<span class="tagcolor"
+                                    style="color:mediumblue">&gt;</span></span><br><br><span class="tagnamecolor"
+                                style="color:brown"><span class="tagcolor"
+                                    style="color:mediumblue">&lt;</span>script<span class="tagcolor"
+                                    style="color:mediumblue">&gt;</span></span><span class="jscolor"
+                                style="color:black"><br>
+                                <span class="jskeywordcolor" style="color:mediumblue">const</span> elmnt =
+                                document.<span class="jspropertycolor" style="color:black">getElementById</span>(<span
+                                    class="jsstringcolor" style="color:brown">"p1"</span>);
+                                elmnt.<span class="jspropertycolor" style="color:black">remove</span>();<br>
+                            </span><span class="tagnamecolor" style="color:brown"><span class="tagcolor"
+                                    style="color:mediumblue">&lt;</span>/script<span class="tagcolor"
+                                    style="color:mediumblue">&gt;</span></span>
+                        </div>
+
+                        <!--//docs-code-block-->
+                        <h3>Demo 2</h3>
+                        <h4>Eliminar elemento.</h4>
+                        <div id="cont2"></div>
+
                         <pre class="shadow-lg rounded text-center"><code class="javascript hljs"> 
 
                             <div>
@@ -726,103 +865,116 @@ document.getElementById("parrafoEj4_3").innerHTML = document.getElementById("tit
 
                     </code></pre>
 
+            </div>
+            </section>
+
+            <!--//FINAL NODOS-->
+
+            <!--//COLECCIONES-->
+            <section class="docs-section" id="item-1-6">
+                <h2 class="section-heading">HTMLCollection DOM</h2>
+                <p>La interfaz HTMLCollection representa una colección genérica (objeto tipo array similar a arguments)
+                    de elementos (en orden de documento) y ofrece métodos y propiedades para seleccionarlos de la lista.
+                </p>
+                <div class="callout-block callout-block-info">
+
+                    <div class="content">
+                        <h4 class="callout-title">
+                            <span class="callout-icon-holder me-1">
+                                <i class="fas fa-info-circle"></i>
+                            </span>
+                            <!--//icon-holder-->
+                            Nota
+                        </h4>
+                        <p>El ID es una cadena que distingue entre mayúsculas y minúsculas y es única dentro del
+                            documento; solo un elemento puede tener un ID dado.</p>
                     </div>
-                    </section>
+                    <!--//content-->
+                </div>
 
-                    <!--//FINAL NODOS-->
+                <p>El getElementsByTagName()método devuelve un HTMLCollectionobjeto.<br>
 
-                    <!--//COLECCIONES-->
-                    <section class="docs-section" id="item-1-6">
-                        <h2 class="section-heading">HTMLCollection DOM</h2>
-                        <p>La interfaz HTMLCollection representa una colección genérica (objeto tipo array similar a arguments) de elementos (en orden de documento) y ofrece métodos y propiedades para seleccionarlos de la lista.</p>
-                       <div class="callout-block callout-block-info">
+                    Un HTMLCollectionobjeto es una lista similar a una matriz (colección) de elementos HTML.<br>
 
-                            <div class="content">
-                                <h4 class="callout-title">
-                                    <span class="callout-icon-holder me-1">
-                                        <i class="fas fa-info-circle"></i>
-                                    </span>
-                                    <!--//icon-holder-->
-                                    Nota
-                                </h4>
-                                <p>El ID es una cadena que distingue entre mayúsculas y minúsculas y es única dentro del
-                                    documento; solo un elemento puede tener un ID dado.</p>
-                            </div>
-                            <!--//content-->
-                        </div>
+                    El siguiente código selecciona todos
+                <p>los elementos en un documento y La lengthpropiedad define el número de elementos en un
+                    HTMLCollection:</p>
+                <!--//docs-intro-->
 
-                        <p>El getElementsByTagName()método devuelve un HTMLCollectionobjeto.<br>
-
-                        Un HTMLCollectionobjeto es una lista similar a una matriz (colección) de elementos HTML.<br>
-
-                        El siguiente código selecciona todos <p>los elementos en un documento y La lengthpropiedad define el número de elementos en un HTMLCollection:</p>
-                             <!--//docs-intro-->
-
-                    <div class="docs-code-block">
-                        <pre class="shadow-lg rounded"><code class="javascript hljs">const miColeccion = document.getElementsByTagName("p");
+                <div class="docs-code-block">
+                    <pre
+                        class="shadow-lg rounded"><code class="javascript hljs">const miColeccion = document.getElementsByTagName("p");
 
 document.getElementById("colec1").innerHTML = "El innerHTML se encuentra en el parrafo: " + miColeccion[1].innerHTML + "El número de parrafos del html es: " + miColeccion.length + " parrafo/s.";</code></pre>
 
-                    </div>
-                    <!--//docs-code-block-->
-                    <h3>Demo 1</h3>
-                            <h4>Uso de colecciones.</h4>
-                            <div id="cont2"></div>
+                </div>
+                <!--//docs-code-block-->
+                <h3>Demo 1</h3>
+                <h4>Uso de colecciones.</h4>
+                <div id="cont2"></div>
 
-                    <p>Tomaremos el parrafo 1 dentro de la coleccion de este html:</p><br>
-                    <p id="colec1"></p>
+                <p>Tomaremos el parrafo 1 dentro de la coleccion de este html:</p><br>
+                <p id="colec1"></p>
 
-                    <script>
+                <script>
                     const miColeccion = document.getElementsByTagName("p");
 
-                    document.getElementById("colec1").innerHTML = "El innerHTML se encuentra en el parrafo de array [1]: " + miColeccion[1].innerHTML +"\n"+ "El número de parrafos del html es: " + miColeccion.length + " parrafo/s.";
-                    
+                    document.getElementById("colec1").innerHTML = "El innerHTML se encuentra en el parrafo de array [1]: " + miColeccion[1].innerHTML + "\n" + "El número de parrafos del html es: " + miColeccion.length + " parrafo/s.";
 
-                    </script>
 
-                    <p>La lengthpropiedad es útil cuando desea recorrer los elementos de una colección lo que nos permite adaptar alguna cualidad como estilos como se ve a continuacion:</p>
-                     <div class="docs-code-block">
-                        <pre class="shadow-lg rounded"><code class="javascript hljs">function mifuncolecc1() {
+                </script>
+
+                <p>La lengthpropiedad es útil cuando desea recorrer los elementos de una colección lo que nos permite
+                    adaptar alguna cualidad como estilos como se ve a continuacion:</p>
+                <div class="docs-code-block">
+                    <pre class="shadow-lg rounded"><code class="javascript hljs">function mifuncolecc1() {
   const myCollection = document.getElementsByTagName("p");
   for (let i = 0; i < myCollection.length; i++) {
     myCollection[i].style.color = "blue";
   }
 }</code></pre>
 
-                    </div>
-                    <!--//docs-code-block-->
-                    <h3>Demo 2</h3>
-                            <h4>Uso de colecciones con diferecntes estilos:</h4>
-                            <div id="cont2"></div>
-                    <p>Podras observar las diferentes aplicaciones de estilos en los parrafos al dar clic: </p>
+                </div>
+                <!--//docs-code-block-->
+                <h3>Demo 2</h3>
+                <h4>Uso de colecciones con diferecntes estilos:</h4>
+                <div id="cont2"></div>
+                <p>Podras observar las diferentes aplicaciones de estilos en los parrafos al dar clic: </p>
 
-                    <button onclick="mifuncolecc1()" class="btn btn-primary">Fondo amarillo</button>
-                    <button onclick="mifuncolecc2()" class="btn btn-primary">Fondo blanco</button>
-                    <button onclick="mifuncolecc3()" class="btn btn-primary">Texto azul</button>
-                    <button onclick="mifuncolecc4()" class="btn btn-primary">Texto negro</button>
+                <button onclick="mifuncolecc1()" class="btn btn-primary">Fondo amarillo</button>
+                <button onclick="mifuncolecc2()" class="btn btn-primary">Fondo blanco</button>
+                <button onclick="mifuncolecc3()" class="btn btn-primary">Texto azul</button>
+                <button onclick="mifuncolecc4()" class="btn btn-primary">Texto negro</button>
 
-                            <script src="../../js/funciones.js"></script>
-                
-                    </section>
+                <script src="../../js/funciones.js"></script>
 
-                    <!--//FINAL COLECCIONES-->
+            </section>
 
-                    <!--//DOM Node Lists-->
+            <!--//FINAL COLECCIONES-->
 
-                    <br><br><section class="docs-section" id="item-1-7">
-                        <h2 class="section-heading">DOM Node Lists</h2>
-                        <p>El objeto "NodeList" consiste en una colección de nodos que son extraídos del documento HTML. Con respecto a su función, el "NodeList" es muy parecido con respecto a su funcionamiento con el "HTMLCollection".</p>
-                        <p>Con respecto a los navegadores más antiguos, esto se caracterizan por utilizar el objeto "NodeList" en lugar del "HTMLCollection", principalmente en métodos como el "getElementsByClassName()". Sin embargo, en la actualidad, se suelen utilizar estos dos objetos.</p>
-                        <p>Entre los métodos y ptopiedades que devuelve el objeto "NodeList" se tiene:</p>
+            <!--//DOM Node Lists-->
 
-                        <ul>
-                            <li><strong>"childNodes".-</strong> Esta propiedad devuelve un objeto NodeList que contiene todos los nodos hijos de un elemento en el orden en que aparecen en el documento.</li>
-                            <li><strong>"querySelectorAll()".-</strong> Esta propiedad devuelve un objeto NodeList que contiene todos los elementos que coinciden con un selector CSS especificado.</li>
-                        </ul><br>
+            <br><br>
+            <section class="docs-section" id="item-1-7">
+                <h2 class="section-heading">DOM Node Lists</h2>
+                <p>El objeto "NodeList" consiste en una colección de nodos que son extraídos del documento HTML. Con
+                    respecto a su función, el "NodeList" es muy parecido con respecto a su funcionamiento con el
+                    "HTMLCollection".</p>
+                <p>Con respecto a los navegadores más antiguos, esto se caracterizan por utilizar el objeto "NodeList"
+                    en lugar del "HTMLCollection", principalmente en métodos como el "getElementsByClassName()". Sin
+                    embargo, en la actualidad, se suelen utilizar estos dos objetos.</p>
+                <p>Entre los métodos y ptopiedades que devuelve el objeto "NodeList" se tiene:</p>
 
-                        <h4>Ejemplo 1.</h4>
-                        <div class="docs-code-block">
-                            <pre class="shadow-lg rounded"><code class="javascript hljs">const listaNodos = document.querySelectorAll("h7");
+                <ul>
+                    <li><strong>"childNodes".-</strong> Esta propiedad devuelve un objeto NodeList que contiene todos
+                        los nodos hijos de un elemento en el orden en que aparecen en el documento.</li>
+                    <li><strong>"querySelectorAll()".-</strong> Esta propiedad devuelve un objeto NodeList que contiene
+                        todos los elementos que coinciden con un selector CSS especificado.</li>
+                </ul><br>
+
+                <h4>Ejemplo 1.</h4>
+                <div class="docs-code-block">
+                    <pre class="shadow-lg rounded"><code class="javascript hljs">const listaNodos = document.querySelectorAll("h7");
 
 document.getElementById("demoListaNodos1").innerHTML = "El primer párrafo es: " + listaNodos[0].innerHTML;
 document.getElementById("demoListaNodos2").innerHTML = "El segundo párrafo es: " + listaNodos[1].innerHTML;
@@ -830,90 +982,101 @@ document.getElementById("demoListaNodos3").innerHTML = "El tercer párrafo es: "
 document.getElementById("demoListaNodos4").innerHTML = "El cuarto párrafo es: " + listaNodos[3].innerHTML;
 document.getElementById("demoListaNodos5").innerHTML = "El quinto párrafo es: " + listaNodos[4].innerHTML;
 </code></pre>
-                        </div>
+                </div>
 
-                        <h7>Párrafo 1</h7><br>
-                        <h7>Párrafo 2</h7><br>
-                        <h7>Párrafo 3</h7><br>
-                        <h7>Párrafo 4</h7><br>
-                        <h7>Párrafo 5</h7><br><br>
+                <h7>Párrafo 1</h7><br>
+                <h7>Párrafo 2</h7><br>
+                <h7>Párrafo 3</h7><br>
+                <h7>Párrafo 4</h7><br>
+                <h7>Párrafo 5</h7><br><br>
 
-                        <p id="demoListaNodos1"></p>
-                        <p id="demoListaNodos2"></p>
-                        <p id="demoListaNodos3"></p>
-                        <p id="demoListaNodos4"></p>
-                        <p id="demoListaNodos5"></p>
-
-
-                        <br><h4>Longitud de las "NodeList" de un documento HTML.</h4>
-                        <p>La propiedad "lenght" permite definir el número de nodos que pertenecen a la lista de nodos.</p><br>
+                <p id="demoListaNodos1"></p>
+                <p id="demoListaNodos2"></p>
+                <p id="demoListaNodos3"></p>
+                <p id="demoListaNodos4"></p>
+                <p id="demoListaNodos5"></p>
 
 
-                        <h4>Ejemplo 2.</h4>
-                        <div class="docs-code-block">
-                            <pre class="shadow-lg rounded"><code class="javascript hljs">const listaNodosEj2 = document.querySelectorAll("h8");
+                <br>
+                <h4>Longitud de las "NodeList" de un documento HTML.</h4>
+                <p>La propiedad "lenght" permite definir el número de nodos que pertenecen a la lista de nodos.</p><br>
 
-document.getElementById("demoNodosEj2").innerHTML = "El documento contiene  " + listaNodosEj2.length + " párrafos.";
-</code></pre>
-                        </div>
 
-                        <h8>Párrafo 1</h8><br>
-                        <h8>Párrafo 2</h8><br>
-                        <h8>Párrafo 3</h8><br>
-                        <h8>Párrafo 4</h8><br>
-                        <h8>Párrafo 5</h8><br><br>
-
-                        <p id="demoNodosEj2"></p><br>
-
-                        <h4>Ejemplo 3.</h4>
-                        <div class="docs-code-block">
-                            <pre class="shadow-lg rounded"><code class="javascript hljs">const listaNodosEj2 = document.querySelectorAll("h8");
+                <h4>Ejemplo 2.</h4>
+                <div class="docs-code-block">
+                    <pre class="shadow-lg rounded"><code class="javascript hljs">const listaNodosEj2 = document.querySelectorAll("h8");
 
 document.getElementById("demoNodosEj2").innerHTML = "El documento contiene  " + listaNodosEj2.length + " párrafos.";
 </code></pre>
-                        </div>
+                </div>
 
-                        <h9>Párrafo 1</h9><br>
-                        <h9>Párrafo 2</h9><br>
-                        <h9>Párrafo 3</h9><br>
-                        <h9>Párrafo 4</h9><br>
-                        <h9>Párrafo 5</h9><br>
+                <h8>Párrafo 1</h8><br>
+                <h8>Párrafo 2</h8><br>
+                <h8>Párrafo 3</h8><br>
+                <h8>Párrafo 4</h8><br>
+                <h8>Párrafo 5</h8><br><br>
 
-                        <br><button onclick="cambioColorListaNodos()">Cambiar de color</button><br><br>
+                <p id="demoNodosEj2"></p><br>
 
-                        <br><h4>Diferencias entre "HTMLCollection" y "NodeList".</h4>
-                        <p>Entre las principales diferencias entre "HTMLCollection" y "NodeList", se tiene:</p>
+                <h4>Ejemplo 3.</h4>
+                <div class="docs-code-block">
+                    <pre class="shadow-lg rounded"><code class="javascript hljs">const listaNodosEj2 = document.querySelectorAll("h8");
 
-                        <br><ul>
-                            <li>"HTMLCollection" se caracteriza por ser, como su nombre lo indica, una colección de elementos del documento HTML, en cambio la "NodeList" consiste en una lista o colección de los nodos del documento HTML, es decir que pueden ser de tipo texto, elementos o atributos.</li>
-                            <li>"HTMLCollection" son devueltos por métodos como getElementsByTagName() y getElementsByClassName(), mientras que la "NodeList" es devuelta por métodos como querySelectorAll() y la propiedad childNodes.</li>
-                            <li>Para acceder a los elementos de las "NodeList" se lo hace mediante su índice, en cambio, para tener acceso a las "HTMLCollection" se lo puede hacer mediante su nombre, id o índice.</li>
-                            <li>Por último, se tiene que las "HTMLCollection" son colecciones de tipo dinámica, mientras que las "NodeList" son estáticas. Es decir, que si se llega a agregar algún elemento en la colección, en el primer caso se va a actualizar de manera automática, en cambio en el caso de las listas de nodos, estas no se van a actualizar.</li>
-                        </ul>
+document.getElementById("demoNodosEj2").innerHTML = "El documento contiene  " + listaNodosEj2.length + " párrafos.";
+</code></pre>
+                </div>
 
-                    
-                    </section>
+                <h9>Párrafo 1</h9><br>
+                <h9>Párrafo 2</h9><br>
+                <h9>Párrafo 3</h9><br>
+                <h9>Párrafo 4</h9><br>
+                <h9>Párrafo 5</h9><br>
 
-                    <!--//FINAL DOM Node Lists-->
+                <br><button onclick="cambioColorListaNodos()">Cambiar de color</button><br><br>
+
+                <br>
+                <h4>Diferencias entre "HTMLCollection" y "NodeList".</h4>
+                <p>Entre las principales diferencias entre "HTMLCollection" y "NodeList", se tiene:</p>
+
+                <br>
+                <ul>
+                    <li>"HTMLCollection" se caracteriza por ser, como su nombre lo indica, una colección de elementos
+                        del documento HTML, en cambio la "NodeList" consiste en una lista o colección de los nodos del
+                        documento HTML, es decir que pueden ser de tipo texto, elementos o atributos.</li>
+                    <li>"HTMLCollection" son devueltos por métodos como getElementsByTagName() y
+                        getElementsByClassName(), mientras que la "NodeList" es devuelta por métodos como
+                        querySelectorAll() y la propiedad childNodes.</li>
+                    <li>Para acceder a los elementos de las "NodeList" se lo hace mediante su índice, en cambio, para
+                        tener acceso a las "HTMLCollection" se lo puede hacer mediante su nombre, id o índice.</li>
+                    <li>Por último, se tiene que las "HTMLCollection" son colecciones de tipo dinámica, mientras que las
+                        "NodeList" son estáticas. Es decir, que si se llega a agregar algún elemento en la colección, en
+                        el primer caso se va a actualizar de manera automática, en cambio en el caso de las listas de
+                        nodos, estas no se van a actualizar.</li>
+                </ul>
 
 
-                    <footer class="footer">
-                        <div class="container text-center py-5">
-                            <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
-                            <small class="copyright">Template diseñado por <a class="theme-link"
-                                    href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying
-                                    Riley.</a></small>
-                            <ul class="social-list list-unstyled pt-4 mb-0">
-                                <li class="list-inline-item"><a href="https://www.facebook.com/"><i
-                                            class="fab fa-facebook-f fa-fw"></i></a></li>
-                                <li class="list-inline-item"><a href="https://www.instagram.com/"><i
-                                            class="fab fa-instagram fa-fw"></i></a></li>
-                            </ul>
-                            <!--//social-list-->
-                        </div>
-                    </footer>
-            </div>
+            </section>
+
+            <!--//FINAL DOM Node Lists-->
+
+
+            <footer class="footer">
+                <div class="container text-center py-5">
+                    <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+                    <small class="copyright">Template diseñado por <a class="theme-link"
+                            href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying
+                            Riley.</a></small>
+                    <ul class="social-list list-unstyled pt-4 mb-0">
+                        <li class="list-inline-item"><a href="https://www.facebook.com/"><i
+                                    class="fab fa-facebook-f fa-fw"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.instagram.com/"><i
+                                    class="fab fa-instagram fa-fw"></i></a></li>
+                    </ul>
+                    <!--//social-list-->
+                </div>
+            </footer>
         </div>
+    </div>
     </div>
     <!--//docs-wrapper-->
 
@@ -951,7 +1114,11 @@ document.getElementById("demoNodosEj2").innerHTML = "El documento contiene  " + 
             origin: 'bottom',
             distance: '300px'
         });
-
+        sr.reveal('#code', {
+            duration: 2000,
+            origin: 'bottom',
+            distance: '300px'
+        });
         sr.reveal('#item-1-2', {
             duration: 2000,
             origin: 'bottom',

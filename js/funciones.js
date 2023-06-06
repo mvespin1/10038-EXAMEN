@@ -1,21 +1,32 @@
 //animaciones
 //** inclinado */
-function izquierda() {
-    let id = null;
-    const elem = document.getElementById("animate");
-    let pos = 0;
-    clearInterval(id);
-    id = setInterval(frame, 5);
-    function frame() {
-        if (pos == 350) {
-            clearInterval(id);
-        } else {
-            pos++;
-            elem.style.top = pos + 'px';
-            elem.style.right = pos + 'px';
-        }
-    }
+function animateTrain() {
+  let start = Date.now();
+  let train = document.getElementById('train');
+
+  let timer = setInterval(function () {
+    let timePassed = Date.now() - start;
+    train.style.left = timePassed / 5 + 'px';
+
+    if (timePassed > 2000) clearInterval(timer);
+  }, 20);
 }
+
+document.getElementById('train').onclick = animateTrain;
+
+document.getElementById('retryButton').onclick = function () {
+  let train = document.getElementById('train');
+  train.style.left = '0px';
+  animateTrain();
+};
+
+
+
+
+
+
+
+
 
 //nodos
 const para = document.createElement("p");
@@ -25,7 +36,7 @@ const element = document.getElementById("div1.1");
 element.appendChild(para);
 
 function myFunction1() {
-    document.getElementById("p1.1").remove();
+  document.getElementById("p1.1").remove();
 }
 //colecciones
 
